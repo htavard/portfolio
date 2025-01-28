@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <navbar />
     <headerPresentation />
+    <navButtons />
   </div>
 </template>
 
 <script setup lang="ts">
-import navbar from './components/navbar.vue';
 import headerPresentation from './components/headerPresentation.vue';
+import navButtons from './components/navButtons.vue';
 
 </script>
 
@@ -16,5 +16,6 @@ import headerPresentation from './components/headerPresentation.vue';
   display: flex;
   flex-direction: column;
   padding: 0 5rem;
+  gap: 10dvh;
 }
 </style>

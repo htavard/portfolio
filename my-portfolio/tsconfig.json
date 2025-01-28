@@ -9,6 +9,11 @@
     },
     {
       "path": "./tsconfig.vitest.json"
-    }
-  ]
+    },
+  ],
+  "compilerOptions": {
+    "types": ["vite/client", "vue"],
+    "noEmit": false,
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"]
 }

@@ -2,6 +2,7 @@
   <div class="falling-leaf" v-for="index in 100" :key="index" :style="[getRandomDelay(), getRandomDuration()]">
     <img src="../assets/pictures/fall/leaf1.png" alt="Falling Leaf" class="img" :style="getLeafStyle()" />
   </div>
+  <!-- <img src="../assets/pictures/fall/leaf-blower.png" alt="leaf blower" class="leaf-blower" /> -->
 </template>
 
 <script setup lang="ts">
@@ -14,13 +15,13 @@ const getRandomRotation = () => {
 };
 
 const getRandomTranslateX = () => {
-  const width = document.documentElement.clientWidth
+  const width = document.documentElement.scrollWidth
   const translateX = Math.random() * width
   return `translateX(${translateX}px)`
 }
 
 const getRandomDelay = () => {
-  return `animation-delay: ${Math.random() * 90}s`; // Délai entre 0 et 2 secondes
+  return `animation-delay: ${Math.random() * 90}s`; // Délai entre 0 et 90 secondes
 }
 
 const getRandomDuration = () => {
@@ -37,20 +38,32 @@ const getLeafStyle = () => {
 </script>
 
 <style scoped lang=scss>
+
 .falling-leaf {
   position: absolute;
   display: flex;
   top: 50%;
+  left: -8vw;
   width: 100px;
   animation: fall 5s ease-in-out forwards;
   transform-style: preserve-3d;
   border-radius: 50%;
   visibility: hidden;
+  padding: 0;
 
   .img {
     width: 8rem;
     height: 8rem;
   }
+
+}
+
+.leaf-blower {
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: rotate(-40deg);
+  width: 20%;
 }
 
 @keyframes fall {
