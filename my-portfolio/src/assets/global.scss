@@ -5,3 +5,25 @@ body{
   color: #343131;
   font-family: "Poppins", sans-serif
 }
+
+button{
+  background-color: transparent;
+  border: 5px double #4A2C2A;
+  font-family: "Poppins", sans-serif;
+  color: #4A2C2A;
+  cursor: pointer;
+}
+
+a, a:visited{
+  text-decoration: none;
+  color:#4A2C2A; 
+}
+
+:root {
+  --fall-cream: #F9E0BB;
+  --fall-pumpkin: #D67D3E;
+  --fall-maple: #A34343;
+  --fall-goldenrod: #E6AF2E;
+  --fall-forest: #556B2F;
+  --fall-espresso: #4A2C2A;
+}

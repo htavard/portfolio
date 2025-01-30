@@ -38,24 +38,24 @@
     padding-right: 15dvw;
 
     &--presentation {
-    max-width: 40vw;
-    font-size: 20px;
-  }
+      max-width: 40vw;
+      font-size: 20px;
+    }
 
-  &--profile-image {
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-    overflow: hidden;
+    &--profile-image {
+      width: 20rem;
+      height: 20rem;
+      border-radius: 50%;
+      overflow: hidden;
 
-    &--img {
-      width: 100%;
-      height: auto;
+      &--img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
-  }
 
-  
+
 }
 
 // .falling {
