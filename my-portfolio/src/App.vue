@@ -12,6 +12,8 @@
 
     <section class="container__skills">
       <h2 id="skills">Skills</h2>
+      <skills />
+      <!-- <test /> -->
     </section>
 
     <section class="container__contact">
@@ -28,6 +30,8 @@
 import headerPresentation from './components/headerPresentation.vue';
 import navButtons from './components/navButtons.vue';
 import project from './components/project.vue';
+import skills from './components/skills.vue';
+import test from './components/test.vue';
 import { projectData } from './data/projects';
 
 function scrollIntoView(section: TSection) {

@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="header__content--profile-image">
-        <img src="../assets/pictures/myself.jpg" alt="Photo d'Hugo Tavard" class="header__content--profile-image--img">
+        <!-- <img src="../assets/pictures/myself.jpg" alt="Photo d'Hugo Tavard" class="header__content--profile-image--img"> -->
       </div>
     </div>
   </header>
