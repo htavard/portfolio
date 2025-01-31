@@ -35,7 +35,7 @@ const emit = defineEmits(
 
 <style lang="scss" scoped>
 .nav-buttons {
-  width: 50dvw;
+  width: 50vw;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -44,12 +44,16 @@ const emit = defineEmits(
   &__list {
     display: flex;
     width: 100%;
+    height: clamp(7vh, 5vw, 9vh);
     gap: 10%;
     padding-left: 0;
     justify-content: center;
     align-items: center;
     list-style-type: none;
-    margin-bottom: 5%;
+    margin-bottom: 1.5rem;
+    isolation: isolate;
+    overflow: visible;
+    
 
     &--item {
       flex: 1;
@@ -57,16 +61,17 @@ const emit = defineEmits(
 
       .nav-btn {
         width: 100%;
-        height:5dvh;
+        height: 100%;
+        padding: 10px 5px;
         box-shadow: 8px 5px 5px #D67D3E;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, font-size 0.2s ease;
       }
 
       .nav-btn:hover {
-        width: 120%;
-        height: 7dvh;
-        box-shadow: 12px 8px 7px #D67D3E;
-        font-size: 1.4rem;
+        transform: scale(1.2);
+        box-shadow: 10px 6px 7px #D67D3E;
+        font-size: 1.3rem;
       }
     }
   }
@@ -83,13 +88,13 @@ const emit = defineEmits(
   content: "";
   display: block;
   border-left: 2px solid #4A2C2A;
-  height: 13dvh;
+  height: 12vh;
 }
 
 .scroll-img-container::after {
   content: "";
   display: block;
   border-left: 2px solid #4A2C2A;
-  height: 13dvh;
+  height: 12dvh;
 }
 </style>
