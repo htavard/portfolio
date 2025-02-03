@@ -8,7 +8,7 @@
       </li>
       <li class="nav-buttons__list--item">
         <button class="nav-btn" @click="emit('scroll', 'skills')">
-          Skills & Technologies
+          Skills
         </button>
       </li>
       <li class="nav-buttons__list--item">
@@ -53,7 +53,7 @@ const emit = defineEmits(
     margin-bottom: 1.5rem;
     isolation: isolate;
     overflow: visible;
-    
+
 
     &--item {
       flex: 1;
@@ -62,16 +62,23 @@ const emit = defineEmits(
       .nav-btn {
         width: 100%;
         height: 100%;
-        padding: 10px 5px;
-        box-shadow: 8px 5px 5px #D67D3E;
-        font-size: 1.1rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, font-size 0.2s ease;
+        background-color: #F9E0BB;
+        border: 3px solid #4A2C2A;
+        border-radius: 30px;
+        box-shadow: #4A2C2A 5px 5px 0 0;
+        color: #4A2C2A;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 18px;
+        padding: 12px 18px;
+        text-align: center;
+        text-decoration: none;
       }
 
       .nav-btn:hover {
-        transform: scale(1.2);
-        box-shadow: 10px 6px 7px #D67D3E;
-        font-size: 1.3rem;
+        box-shadow: #422800 2px 2px 0 0;
+        transform: translate(2px, 2px);
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="skills" id="skillList">
-    <div class="skills__item" v-for="skill, index in skills" :key="skill.name" :id="`skillItem-${index}`"
+    <div class="skills__item" v-for="(skill, index) in skills" :key="skill.name" :id="`skillItem-${index}`"
       @mouseenter="removeMarginOnHover(index)" @mouseleave="applyMarginOnLeave(index)">
       <span class="skills__item--icon"><img :src="skill.icon" :alt="skill.name" class="skills__item--icon__img"></span>
       <span class="skills__item--name">{{ skill.name }}</span>
@@ -14,9 +14,27 @@ const containerWidth = ref<number>(0)
 const itemWidth = ref<number[]>([])
 const problematicElements = ref<HTMLElement[]>([])
 const problematicIndexes = ref<number[]>([])
+const isLastLineOneElement = ref<boolean>(false)
 
+
+const resizeObserver = new ResizeObserver((entrySizes) => {
+  entrySizes.forEach(() => {
+    resetMargins()
+    initializeWidth()
+    checkLinesAndLastIcons()
+  })
+})
+
+onMounted(() => {
+  resizeObserver.observe(document.getElementById('skillList'))
+})
+
+onUnmounted(() => {
+  resizeObserver.disconnect()
+})
 
 function initializeWidth() {
+  itemWidth.value = []
   const containerElement = document.getElementById("skillList")
   if (containerElement) containerWidth.value = containerElement.clientWidth
   for (let i = 0; i < skills.length; i++) {
@@ -24,25 +42,44 @@ function initializeWidth() {
   }
 }
 
+function resetMargins() {
+  for (let i = 0; i < skills.length; i++) {
+    document.getElementById(`skillItem-${i}`).style.marginRight = "0px"
+  }
+}
+
 function checkLinesAndLastIcons() {
+  problematicElements.value = []
+  problematicIndexes.value = []
+  isLastLineOneElement.value = false
   let itemInPreviousLines = 0
-  console.log('🚀 ~ checkLinesAndLastIcons ~ containerWidth.value:', containerWidth.value)
+  let numberOfItemLastLine = 0
   for (let j = 0; j < skills.length; j++) {
-    console.log('🚀 ~ checkLinesAndLastIcons ~ (j-itemInPreviousLines + 1) * 60 + (j-itemInPreviousLines) * 50:', (j - itemInPreviousLines + 1) * 60 + (j - itemInPreviousLines) * 50 + 120)
     if ((j - itemInPreviousLines + 1) * 60 + (j - itemInPreviousLines) * 50 + 120 >= containerWidth.value) {
       itemInPreviousLines = j
       problematicElements.value.push(document.getElementById(`skillItem-${j - 1}`))
       problematicIndexes.value.push(j - 1)
       document.getElementById(`skillItem-${j - 1}`).style.marginRight = "120px"
+      numberOfItemLastLine = itemInPreviousLines / problematicElements.value.length
     }
   }
+  if (numberOfItemLastLine && skills.length % numberOfItemLastLine === 1) {
+    isLastLineOneElement.value = true
+    problematicElements.value.pop()
+    problematicElements.value.push(document.getElementById(`skillItem-${skills.length - 3}`))
+    document.getElementById(`skillItem-${skills.length - 3}`).style.marginRight = "240px"
+    document.getElementById(`skillItem-${skills.length - 2}`).style.marginRight = "0px"
+  }
+  console.log('🚀 ~ checkLinesAndLastIcons ~ problematicIndexes:', problematicIndexes.value.length)
 }
 
 function removeMarginOnHover(index: number) {
   let flag = false
+
   for (let i = 0; i < problematicIndexes.value.length; i++) {
     if (index <= problematicIndexes.value[i] && !flag) {
-      problematicElements.value[i].style.marginRight = "0px"
+      problematicElements.value[i].style.marginRight = i === problematicElements.value.length - 1 && isLastLineOneElement.value ? "120px" : "0px"
+
       flag = true
     }
   }
@@ -50,9 +87,11 @@ function removeMarginOnHover(index: number) {
 
 function applyMarginOnLeave(index: number) {
   let flag = false
+
   for (let i = 0; i < problematicIndexes.value.length; i++) {
     if (index <= problematicIndexes.value[i] && !flag) {
-      problematicElements.value[i].style.marginRight = "120px"
+      problematicElements.value[i].style.marginRight = i === problematicElements.value.length - 1 && isLastLineOneElement.value ? "240px" : "120px"
+
       flag = true
     }
   }
