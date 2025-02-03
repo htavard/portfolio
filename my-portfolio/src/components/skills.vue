@@ -17,6 +17,7 @@ const problematicIndexes = ref<number[]>([])
 const isLastLineOneElement = ref<boolean>(false)
 
 
+
 const resizeObserver = new ResizeObserver((entrySizes) => {
   entrySizes.forEach(() => {
     resetMargins()
@@ -79,7 +80,6 @@ function removeMarginOnHover(index: number) {
   for (let i = 0; i < problematicIndexes.value.length; i++) {
     if (index <= problematicIndexes.value[i] && !flag) {
       problematicElements.value[i].style.marginRight = i === problematicElements.value.length - 1 && isLastLineOneElement.value ? "120px" : "0px"
-
       flag = true
     }
   }
@@ -112,6 +112,7 @@ nextTick(() => {
   flex-wrap: wrap;
   gap: 50px;
   position: relative;
+  margin-top: 8vh;
 
   &__item {
     position: relative;
@@ -122,8 +123,9 @@ nextTick(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     overflow: hidden;
+    margin-bottom: 8vh;
 
     &::before {
       content: "";
@@ -132,7 +134,7 @@ nextTick(() => {
       border-radius: 60px;
       background: #ff7f51;
       opacity: 0;
-      transition: 0.5s;
+      transition: 0.3s;
     }
 
     &::after {
@@ -143,7 +145,7 @@ nextTick(() => {
       height: 100%;
       border-radius: 60px;
       background: #ff7f51;
-      transition: 0.5s;
+      transition: 0.3s;
       filter: blur(15px);
       z-index: -1;
       opacity: 0;
@@ -159,7 +161,7 @@ nextTick(() => {
 
       .skills__item--name {
         transform: scale(1);
-        transition-delay: 0.25s;
+        transition-delay: 0.1s;
       }
     }
 
@@ -170,14 +172,14 @@ nextTick(() => {
 
     &--icon {
       position: absolute;
-      transition: 0.5s;
+      transition: 0.3s;
 
       &__img {
         width: 50px;
         height: 50px;
         object-fit: contain;
-        transition: 0.5s;
-        transition-delay: 0.25s;
+        transition: 0.3s;
+        transition-delay: 0.1s;
       }
     }
 
@@ -188,7 +190,7 @@ nextTick(() => {
       letter-spacing: 0.1em;
       text-transform: uppercase;
       transform: scale(0);
-      transition: 0.5s;
+      transition: 0.3s;
       transition-delay: 0s;
       white-space: nowrap;
     }

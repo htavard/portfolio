@@ -21,10 +21,10 @@
           <a href="../assets/files/ht_dev_resume_en.pdf" download style="display: flex;">
             <button class="dl-resume">
               <span class="dl-resume__left">
-                <img src="../assets/pictures/resume.png" alt="resume icon" width="20px" height="20px">
+                <img src="../assets/pictures/resume.png" alt="resume icon" width="25px" height="25px">
               </span>
               <span class="dl-resume__right">
-                <img src="../assets/pictures/download.png" alt="download icon" width="20px" height="20px">
+                <img src="../assets/pictures/download.png" alt="download icon" width="25px" height="25px">
               </span>
               <span class="dl-resume__text">
                 CV
