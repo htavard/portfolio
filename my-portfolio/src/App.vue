@@ -1,4 +1,7 @@
 <template>
+  <div class="noise-background"></div>
+  <!-- <particleEffect /> -->
+  <navbar @scroll="scrollIntoView" />
   <div class="container" id="top-page">
     <div class="container__header">
       <headerPresentation />
@@ -17,16 +20,23 @@
 
     <section class="container__contact">
       <h2 id="contact">Contact me</h2>
-      <contact ref="form"/>
+      <contact ref="form" />
     </section>
 
     <button class="scroll-to-top" @click="scrollIntoView('top-page')" title="Scroll to top">
-      <svg xmlns="http://www.w3.org/2000/svg" title="Scroll to top" viewBox="-5 -7.5 24 24" width="40" fill="currentColor"><path d="M7.071 2.828l-4.95 4.95A1 1 0 0 1 .707 6.364L6.364.707a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414l-4.95-4.95z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" title="Scroll to top" viewBox="-5 -7.5 24 24" width="40"
+        fill="currentColor">
+        <path
+          d="M7.071 2.828l-4.95 4.95A1 1 0 0 1 .707 6.364L6.364.707a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414l-4.95-4.95z">
+        </path>
+      </svg>
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import particleEffect from './components/particleEffect.vue';
+import navbar from './components/navbar.vue';
 import headerPresentation from './components/headerPresentation.vue';
 import navButtons from './components/navButtons.vue';
 import project from './components/project.vue';
@@ -39,9 +49,11 @@ const form = ref(null)
 
 function scrollIntoView(section: TSection) {
   const element = document.getElementById(section)
-  element.scrollIntoView({behavior: "smooth" })
+  element.scrollIntoView({ behavior: "smooth" })
 
-  if(section === "contact") form.value.focusFirstInput()
+  setTimeout(() => {
+    if (section === "contact") form.value.focusFirstInput()
+  }, 300)
 }
 </script>
 
@@ -49,7 +61,7 @@ function scrollIntoView(section: TSection) {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 0 5rem;
+  padding: 0 5vw;
 
   &__header {
     height: 100dvh;
@@ -63,8 +75,12 @@ function scrollIntoView(section: TSection) {
     flex-direction: column;
     max-height: 100vh;
     gap: 5%;
+
+    
+
     &--item {
       margin-bottom: 20px;
+
     }
   }
 
@@ -74,10 +90,11 @@ function scrollIntoView(section: TSection) {
 }
 
 .scroll-to-top {
+  color: #F9E0BB;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #A34343;
+  background-color: #4A2C2A;
   border-radius: 50%;
   border: none;
   position: fixed;
@@ -92,6 +109,19 @@ function scrollIntoView(section: TSection) {
 .scroll-to-top:hover {
   transform: scale(1.2);
   transition: transform 0.3s ease-in-out;
-  box-shadow: 5px 3px 5px #f7b267;
+}
+
+.noise-background {
+  animation: noise 1.2s steps(3) infinite both;
+  background-image: url("../src/assets/pictures/noise.png");
+  height: 200%;
+  left: -50%;
+  opacity: .1;
+  pointer-events: none;
+  position: fixed;
+  top: -50%;
+  width: 200%;
+  will-change: auto;
+  z-index: 100;
 }
 </style>

@@ -197,6 +197,7 @@ nextTick(() => {
   }
 }
 
+
 // .skills:hover {
 //   flex-wrap: nowrap;
 // }</style>

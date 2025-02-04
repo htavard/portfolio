@@ -28,6 +28,10 @@
           <img src="../assets/pictures/email.png" width="20px" height="20px" />
           <span>hugotavard@gmail.com</span>
         </strong>
+        <strong class="contact-container__details--item__content" @click="callMe">
+          <img src="../assets/pictures/icons/phone-flip.png" width="20px" height="20px" />
+          <span>+33 7 86 43 41 02</span>
+        </strong>
       </div>
 
       <div class="contact-container__details--item">
@@ -69,6 +73,10 @@ defineExpose({
 
 function sendMail() {
   window.location.href = `mailto:hugotavard@gmail.com`;
+}
+
+function callMe() {
+  window.location.href = `tel:+33786434102`
 }
 
 async function sendMailNoWindow() {

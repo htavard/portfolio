@@ -1,7 +1,6 @@
 <template>
   <header class="header">
     <div class="header__title">
-      <h1>Hugo Tavard</h1>
       <h2>Full-Stack Developer | Vue Enthusiast</h2>
     </div>
     <div class="header__content">
@@ -38,9 +37,6 @@
       </div>
     </div>
   </header>
-  <!-- <div class="falling">
-    <leavesFalling />
-  </div> -->
 </template>
 
 <script setup lang="ts">
@@ -53,6 +49,7 @@ function clickContact(link: string) {
 .header {
   display: flex;
   flex-direction: column;
+  margin-top: 10vh;
 
   &__content {
     display: flex;
@@ -67,12 +64,14 @@ function clickContact(link: string) {
 
       &__contact {
         display: flex;
+        align-items: center;
         gap: 10%;
         margin-top: 10%;
         margin-left: 10%;
 
         >img {
           width: 50px;
+          height: 50px;
           cursor: pointer;
           transform: scale(1);
           transition: transform 0.3s ease;
@@ -120,12 +119,12 @@ function clickContact(link: string) {
   }
 
   &__left {
-    left: 10px;
+    left: 20px;
     opacity: 1;
   }
 
   &__right {
-    right: 10px;
+    right: 20px;
     opacity: 0;
     transform: translateX(20px);
   }
@@ -135,6 +134,8 @@ function clickContact(link: string) {
     color: #343131;
     font-weight: bold;
     font-size: 1.25rem;
+    transform: translateX(20px);
+    transition: transform 0.3s ease
   }
 }
 
@@ -146,6 +147,10 @@ function clickContact(link: string) {
 .dl-resume:hover .dl-resume__right {
   opacity: 1;
   transform: translateX(0);
+}
+
+.dl-resume:hover .dl-resume__text {
+  transform: translate(-20px);
 }
 
 // .falling {

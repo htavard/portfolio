@@ -106,6 +106,7 @@ function openLink() {
 .projects:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(163, 67, 67, 0.5);
+  z-index: 1000;
 }
 
 .projects:hover::before {
