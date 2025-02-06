@@ -131,7 +131,7 @@ function clickContact(link: string) {
 
   &__text {
     margin: 0 25px;
-    color: #343131;
+    color: #4A2C2A;
     font-weight: bold;
     font-size: 1.25rem;
     transform: translateX(20px);

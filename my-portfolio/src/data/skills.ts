@@ -11,7 +11,7 @@ export const skills: SkillTag[] = [
   {name: 'nuxt', icon: 'src/assets/pictures/icons/nuxt.png'},
   {name: 'php', icon: 'src/assets/pictures/icons/php.png'},
   {name: 'python', icon: 'src/assets/pictures/icons/python.png'},
-  {name: 'scss', icon: 'src/assets/pictures/icons/scss.png'},
+  {name: 'sass', icon: 'src/assets/pictures/icons/scss.png'},
   {name: 'sql', icon: 'src/assets/pictures/icons/sql.png'},
   {name: 'typescript', icon: 'src/assets/pictures/icons/typescript.png'},
   {name: 'vscode', icon: 'src/assets/pictures/icons/vscode.png'},

@@ -42,7 +42,7 @@ onMounted(() => {
   justify-content: space-between;
   transition: background-color 0.2s ease;
   background-color: #F9E0BB;
-  z-index: 999;
+  z-index: 1000;
   margin: -3vh -1vw 0 -1vw;
   padding: 0 6vw;
   overflow-x: visible;

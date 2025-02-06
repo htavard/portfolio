@@ -38,7 +38,7 @@ function openLink() {
   align-items: center;
   background-color: #f7b267;
   padding: 0 5%;
-  height: 50dvh;
+  min-height: 50dvh;
   // border-radius: 25% 10%;
   border-radius: 30px;
   overflow: hidden;
@@ -60,12 +60,15 @@ function openLink() {
 
   &__content {
     flex: 2;
+    flex-wrap: wrap;
+    
 
     &--tags {
       display: flex;
       gap: 20px;
       padding-left: 0;
       margin-bottom: 30px;
+      flex-wrap: wrap;
 
       &__item {
         display: flex;
@@ -106,7 +109,7 @@ function openLink() {
 .projects:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(163, 67, 67, 0.5);
-  z-index: 1000;
+  z-index: 900;
 }
 
 .projects:hover::before {

@@ -13,13 +13,18 @@
         class="container__projects--item" />
     </section>
 
+    <section class="test-project">
+      <project :project="projectData[0]" />
+      <project :project="projectData[1]" />
+    </section>
+
     <section class="container__skills">
       <h2 id="skills">Skills</h2>
       <skills />
     </section>
 
     <section class="container__contact">
-      <h2 id="contact">Contact me</h2>
+      <h2 id="contact">Let's get in touch</h2>
       <contact ref="form" />
     </section>
 
@@ -35,7 +40,6 @@
 </template>
 
 <script setup lang="ts">
-import particleEffect from './components/particleEffect.vue';
 import navbar from './components/navbar.vue';
 import headerPresentation from './components/headerPresentation.vue';
 import navButtons from './components/navButtons.vue';
@@ -73,10 +77,8 @@ function scrollIntoView(section: TSection) {
   &__project {
     display: flex;
     flex-direction: column;
-    max-height: 100vh;
+    min-height: 100vh;
     gap: 5%;
-
-    
 
     &--item {
       margin-bottom: 20px;
@@ -116,12 +118,23 @@ function scrollIntoView(section: TSection) {
   background-image: url("../src/assets/pictures/noise.png");
   height: 200%;
   left: -50%;
-  opacity: .1;
+  opacity: 0.1;
   pointer-events: none;
   position: fixed;
   top: -50%;
   width: 200%;
   will-change: auto;
   z-index: 100;
+}
+
+h2 {
+  padding-top: 110px; //navbar height
+  margin-top: -110px;
+}
+
+.test-project {
+  display: flex;
+  gap: 5vw;
+  width: 100%;
 }
 </style>
