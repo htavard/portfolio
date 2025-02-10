@@ -1,30 +1,33 @@
-<!-- HTML !-->
 <template>
-  <button class="button-74" role="button">Button 74</button>
+  <swiper-container :slides-per-view="3" :space-between="spaceBetween" :centered-slides="true" :pagination="{
+    hideOnClick: true
+  }" :breakpoints="{
+      768: {
+        slidesPerView: 3,
+      },
+    }" @swiperprogress="onProgress" @swiperslidechange="onSlideChange">
+    <swiper-slide>Slide 1</swiper-slide>
+    <swiper-slide>Slide 2</swiper-slide>
+    <swiper-slide>Slide 3</swiper-slide>
+  </swiper-container>
 </template>
 
-<style scoped lang=scss>
-.button-74 {
-  background-color: #F9E0BB;
-  border: 3px solid #4A2C2A;
-  border-radius: 30px;
-  box-shadow: #4A2C2A 4px 4px 0 0;
-  color: #4A2C2A;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 12px 18px;
-  text-align: center;
-  text-decoration: none;
-}
+<script setup>
+import { register } from 'swiper/element/bundle';
 
-.button-74:hover {
-  background-color: #F9E0BB;
-}
+register();
 
-.button-74:active {
-  box-shadow: #422800 2px 2px 0 0;
-  transform: translate(2px, 2px);
-}
-</style>
+
+const spaceBetween = 10;
+const onProgress = (e) => {
+  const [swiper, progress] = e.detail;
+  console.log(progress);
+};
+
+const onSlideChange = (e) => {
+  console.log('slide changed');
+};
+
+
+
+</script>

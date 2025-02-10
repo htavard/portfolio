@@ -71,7 +71,6 @@ function checkLinesAndLastIcons() {
     document.getElementById(`skillItem-${skills.length - 3}`).style.marginRight = "240px"
     document.getElementById(`skillItem-${skills.length - 2}`).style.marginRight = "0px"
   }
-  console.log('🚀 ~ checkLinesAndLastIcons ~ problematicIndexes:', problematicIndexes.value.length)
 }
 
 function removeMarginOnHover(index: number) {

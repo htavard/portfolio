@@ -7,15 +7,16 @@
       <headerPresentation />
       <navButtons @scroll="scrollIntoView" />
     </div>
-    <section class="container__project">
+    <!-- <section class="container__project">
       <h2 id="projects">Main projects</h2>
       <project v-for="project in projectData" :key="project.name" :project="project"
         class="container__projects--item" />
-    </section>
+    </section> -->
 
-    <section class="test-project">
-      <project :project="projectData[0]" />
-      <project :project="projectData[1]" />
+    <section class="container__project">
+      <h2 id="projects">Main projects</h2>
+      <!-- <project :projectList="projectData" /> -->
+      <NewProject :projectList="projectData"/>
     </section>
 
     <section class="container__skills">
@@ -36,18 +37,21 @@
         </path>
       </svg>
     </button>
-  </div>
+
+    <!-- <test /> -->
+  </div> 
 </template>
 
 <script setup lang="ts">
 import navbar from './components/navbar.vue';
 import headerPresentation from './components/headerPresentation.vue';
 import navButtons from './components/navButtons.vue';
-import project from './components/project.vue';
+import project from './components/Project.vue';
 import skills from './components/skills.vue';
 import contact from './components/contact.vue';
-// import test from './components/test.vue';
+import test from './components/test.vue';
 import { projectData } from './data/projects';
+import NewProject from './components/newProject.vue';
 
 const form = ref(null)
 
@@ -62,6 +66,8 @@ function scrollIntoView(section: TSection) {
 </script>
 
 <style scoped lang="scss">
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css');
+
 .container {
   display: flex;
   flex-direction: column;
@@ -79,11 +85,6 @@ function scrollIntoView(section: TSection) {
     flex-direction: column;
     min-height: 100vh;
     gap: 5%;
-
-    &--item {
-      margin-bottom: 20px;
-
-    }
   }
 
   &__skills {
