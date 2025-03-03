@@ -3,14 +3,15 @@
     <div v-for="project, index in projectList" :key="project.name" class="project__item" :class="project.orientation">
       <img class="project__item--img" :src="project.img" :alt="project.alt" :id="`project-${index}`"
         @click="openLink(project)" @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)">
-      <i class="fi fi-bs-arrow-up-right-from-square goto-icon" width="60px" :id="`goto-${index}`"></i>
+      <i class="fi fi-bs-arrow-up-right-from-square goto-icon" width="60px" :id="`goto-${index}`"
+        @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)" @click="openLink(project)"></i>
       <div class="project__item--img__titlebox" id="titleBox"
         :style="project.orientation === 'left' ? { left: '65%' } : { right: '65%' }" @click="openLink(project)"
         @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)">
         <strong>{{ project.name }}</strong>
         <p>{{ project.description }}</p>
       </div>
-      <div class="tag-container" :style="{ bottom: `calc(-${bottomPx/2}px - 1rem)` }">
+      <div class="tag-container" :style="{ bottom: `calc(-${bottomPx / 2}px - 1rem)` }">
         <ul class="project-tags"
           :class="{ 'animation-right': project.orientation === 'right', 'animation-left': project.orientation === 'left' }">
           <li class="project-tags__item" v-for="tag in project.tags" :key="tag.name">
@@ -114,11 +115,12 @@ function handleMouseLeave(index: number) {
         text-align: center;
         align-items: center;
         justify-content: center;
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
 
 
         strong {
           text-wrap: wrap;
-          font-size: 1rem;
+          font-size: clamp(0.8rem, 1.5vw, 1rem);
         }
       }
     }
@@ -142,7 +144,7 @@ function handleMouseLeave(index: number) {
   transform: translate(-50%, -50%);
   font-size: 3rem;
   transition: opacity 0.3s ease-in;
-  color: #720026;
+  color: #f7b267;
 }
 
 .tag-container {
@@ -152,13 +154,10 @@ function handleMouseLeave(index: number) {
   gap: 1rem;
   cursor: default;
   width: 100%;
-  // bottom: calc(85% + 30%);
-  // bottom: 0;
 
   .project-tags {
     display: flex;
     flex-direction: row;
-    // justify-content: space-between;
     min-width: 100%;
     flex-shrink: 0;
     gap: 1rem;
