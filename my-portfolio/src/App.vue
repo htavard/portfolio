@@ -7,16 +7,11 @@
       <headerPresentation />
       <navButtons @scroll="scrollIntoView" />
     </div>
-    <!-- <section class="container__project">
-      <h2 id="projects">Main projects</h2>
-      <project v-for="project in projectData" :key="project.name" :project="project"
-        class="container__projects--item" />
-    </section> -->
+
 
     <section class="container__project">
       <h2 id="projects">Main projects</h2>
-      <!-- <project :projectList="projectData" /> -->
-      <NewProject :projectList="projectData"/>
+      <Projects :projectList="projectData"/>
     </section>
 
     <section class="container__skills">
@@ -46,12 +41,10 @@
 import navbar from './components/navbar.vue';
 import headerPresentation from './components/headerPresentation.vue';
 import navButtons from './components/navButtons.vue';
-import project from './components/Project.vue';
+import Projects from './components/Projects.vue';
 import skills from './components/skills.vue';
 import contact from './components/contact.vue';
-import test from './components/test.vue';
 import { projectData } from './data/projects';
-import NewProject from './components/newProject.vue';
 
 const form = ref(null)
 
