@@ -1,77 +1,80 @@
 <template>
-  <div class="skills" id="skillList">
-    <div class="skills__item" v-for="(skill, index) in skills" :key="skill.name" :id="`skillItem-${index}`"
-      @mouseenter="removeMarginOnHover(index)" @mouseleave="applyMarginOnLeave(index)">
-      <span class="skills__item--icon"><img :src="skill.icon" :alt="skill.name" class="skills__item--icon__img"></span>
-      <span class="skills__item--name">{{ skill.name }}</span>
+  <div class="list-container" id="containerList">
+    <h3 class="category">{{ category }}</h3>
+    <div class="skills" id="skillList" v-if="skills">
+      <div class="skills__item" v-for="(skill, index) in skills" :key="skill.name"
+        :id="`skillItem-${index}-${category}`" @mouseenter="removeMarginOnHover(index)"
+        @mouseleave="applyMarginOnLeave(index)">
+        <span class="skills__item--icon"><img :src="skill.icon" :alt="skill.name"
+            class="skills__item--icon__img"></span>
+        <span class="skills__item--name">{{ skill.name }}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { skills } from '../data/skills';
-const containerWidth = ref<number>(0)
+import { skillList } from '../data/skills';
+import { ESkillCategory } from '../types/enums';
+
+const props = defineProps({
+  category: { type: String as PropType<ESkillCategory>, default: null },
+  containerWidth: { type: Number, default: 0 }
+})
+const skillsWidth = ref<number>(props.containerWidth)
 const itemWidth = ref<number[]>([])
 const problematicElements = ref<HTMLElement[]>([])
 const problematicIndexes = ref<number[]>([])
 const isLastLineOneElement = ref<boolean>(false)
-
-
-
-const resizeObserver = new ResizeObserver((entrySizes) => {
-  entrySizes.forEach(() => {
-    resetMargins()
-    initializeWidth()
-    checkLinesAndLastIcons()
-  })
-})
+const skills = ref<SkillTag[]>([])
 
 onMounted(() => {
-  resizeObserver.observe(document.getElementById('skillList'))
+  skills.value = skillList.filter((skill) => skill.category === props.category
+  )
 })
 
-onUnmounted(() => {
-  resizeObserver.disconnect()
-})
 
 function initializeWidth() {
   itemWidth.value = []
-  const containerElement = document.getElementById("skillList")
-  if (containerElement) containerWidth.value = containerElement.clientWidth
-  for (let i = 0; i < skills.length; i++) {
+  if (!skillsWidth.value) return
+  for (let i = 0; i < skills.value.length; i++) {
     itemWidth.value.push(60) //largeur d'une icône
   }
 }
 
 function resetMargins() {
-  for (let i = 0; i < skills.length; i++) {
-    document.getElementById(`skillItem-${i}`).style.marginRight = "0px"
+  for (let i = 0; i < skills.value.length; i++) {
+    document.getElementById(`skillItem-${i}-${props.category}`).style.marginRight = "0px"
   }
 }
 
 function checkLinesAndLastIcons() {
+  if (!skillsWidth.value) return
   problematicElements.value = []
   problematicIndexes.value = []
   isLastLineOneElement.value = false
   let itemInPreviousLines = 0
   let numberOfItemLastLine = 0
-  for (let j = 0; j < skills.length; j++) {
-    if ((j - itemInPreviousLines + 1) * 60 + (j - itemInPreviousLines) * 50 + 120 >= containerWidth.value) {
+  const boxStyle = window.getComputedStyle(document.getElementById('containerList'))
+  const boxPadding = parseFloat(boxStyle.paddingLeft) + parseFloat(boxStyle.paddingRight)
+  for (let j = 0; j < skills.value.length; j++) {
+    if ((j - itemInPreviousLines + 1) * 60 + (j - itemInPreviousLines) * 50 + 120 >= (skillsWidth.value - boxPadding)) {
       itemInPreviousLines = j
-      problematicElements.value.push(document.getElementById(`skillItem-${j - 1}`))
+      problematicElements.value.push(document.getElementById(`skillItem-${j - 1}-${props.category}`))
       problematicIndexes.value.push(j - 1)
-      document.getElementById(`skillItem-${j - 1}`).style.marginRight = "120px"
+      document.getElementById(`skillItem-${j - 1}-${props.category}`).style.marginRight = "120px"
       numberOfItemLastLine = itemInPreviousLines / problematicElements.value.length
     }
   }
-  if (numberOfItemLastLine && skills.length % numberOfItemLastLine === 1) {
+  if (numberOfItemLastLine && skills.value.length % numberOfItemLastLine === 1 && skills.value.length > 3) {
     isLastLineOneElement.value = true
     problematicElements.value.pop()
-    problematicElements.value.push(document.getElementById(`skillItem-${skills.length - 3}`))
-    document.getElementById(`skillItem-${skills.length - 3}`).style.marginRight = "240px"
-    document.getElementById(`skillItem-${skills.length - 2}`).style.marginRight = "0px"
+    problematicElements.value.push(document.getElementById(`skillItem-${skills.value.length - 3}-${props.category}`))
+    document.getElementById(`skillItem-${skills.value.length - 3}-${props.category}`).style.marginRight = "240px"
+    document.getElementById(`skillItem-${skills.value.length - 2}-${props.category}`).style.marginRight = "0px"
   }
 }
+  
 
 function removeMarginOnHover(index: number) {
   let flag = false
@@ -96,16 +99,31 @@ function applyMarginOnLeave(index: number) {
   }
 }
 
-nextTick(() => {
-  initializeWidth()
-  checkLinesAndLastIcons()
-})
-
-
-
+watch(() => props.containerWidth,
+  (newValue) => {
+    skillsWidth.value = newValue
+    nextTick(() => {
+      resetMargins()
+      initializeWidth()
+      checkLinesAndLastIcons()
+    })
+  }, { immediate: true })
 </script>
 
 <style scoped lang="scss">
+.list-container {
+  border: #4A2C2A 3px solid;
+  border-radius: 50px;
+  padding: 1rem;
+  width: fit-content;
+}
+
+.category {
+  text-transform: capitalize;
+  padding-left: 2%;
+  text-align: center;
+}
+
 .skills {
   display: flex;
   flex-wrap: wrap;

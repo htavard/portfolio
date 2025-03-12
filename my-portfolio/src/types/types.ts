@@ -1,3 +1,5 @@
+import type { ESkillCategory } from "@/types/enums"
+
 export {}
 
 declare global {
@@ -14,9 +16,11 @@ declare global {
   interface SkillTag {
     name: string
     icon?: string
+    category?: ESkillCategory
   }
 
   type TOrientation = 'left'|'right'
 
   type TSection = 'projects' | 'skills' | 'contact' | 'top-page'
+
 }

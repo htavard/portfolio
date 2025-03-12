@@ -11,12 +11,18 @@
 
     <section class="container__project">
       <h2 id="projects">Main projects</h2>
-      <Projects :projectList="projectData"/>
+      <Projects :projectList="projectData" />
     </section>
 
     <section class="container__skills">
       <h2 id="skills">Skills</h2>
-      <skills />
+      <div class="skill-list" id="skillsGroupList">
+        <skills-view :category="ESkillCategory.TECHNOLOGY" :container-width="skillsWidth" />
+        <div class="skill-list__other">
+          <skills-view :category="ESkillCategory.DESIGN" :container-width="skillsWidth/2" />
+          <skills-view :category="ESkillCategory.TOOL" :container-width="skillsWidth/2" />
+        </div>
+      </div>
     </section>
 
     <section class="container__contact">
@@ -34,7 +40,7 @@
     </button>
 
     <!-- <test /> -->
-  </div> 
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -42,11 +48,42 @@ import navbar from './components/navbar.vue';
 import headerPresentation from './components/headerPresentation.vue';
 import navButtons from './components/navButtons.vue';
 import Projects from './components/Projects.vue';
-import skills from './components/skills.vue';
+import skillsView from './components/skills-view.vue';
 import contact from './components/contact.vue';
 import { projectData } from './data/projects';
+import { skillList } from './data/skills';
+import { ESkillCategory } from './types/enums';
 
 const form = ref(null)
+const technologySKill = ref<SkillTag[]>([])
+const designSKill = ref<SkillTag[]>([])
+const toolSKill = ref<SkillTag[]>([])
+
+const skillsWidth = ref<number>(0)
+
+const resizeObserver = new ResizeObserver((entrySizes) => {
+  entrySizes.forEach(() => {
+    skillsWidth.value = document.getElementById('skillsGroupList').clientWidth
+  })
+})
+
+onMounted(() => {
+  const element = document.getElementById('skillsGroupList')
+  resizeObserver.observe(element)
+  skillsWidth.value = element.clientWidth
+})
+
+onUnmounted(() => {
+  resizeObserver.disconnect()
+})
+
+function categorySkills() {
+  skillList.forEach((s) => {
+    if (s.category === ESkillCategory.TECHNOLOGY) technologySKill.value.push(s)
+    else if (s.category === ESkillCategory.DESIGN) designSKill.value.push(s)
+    else toolSKill.value.push(s)
+  })
+}
 
 function scrollIntoView(section: TSection) {
   const element = document.getElementById(section)
@@ -56,6 +93,8 @@ function scrollIntoView(section: TSection) {
     if (section === "contact") form.value.focusFirstInput()
   }, 300)
 }
+
+categorySkills()
 </script>
 
 <style scoped lang="scss">
@@ -82,6 +121,21 @@ function scrollIntoView(section: TSection) {
 
   &__skills {
     margin: 10vh 0;
+
+    h2 {
+      margin-bottom: 5%;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      &__other {
+        display: flex;
+        gap: 1rem;
+      }
+    }
   }
 }
 

@@ -57,8 +57,6 @@ function adjustBottomTagPosition() {
   const titleBox = document.getElementById('titleBox')
 
   bottomPx.value = titleBox.scrollHeight
-  console.log('🚀 ~ adjustBottomTagPosition ~ bottomPx.value = titleBox.value.scrollHeight:', titleBox.scrollHeight)
-
 }
 
 onMounted(() => {
