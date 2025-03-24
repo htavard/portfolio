@@ -127,6 +127,7 @@ function clickContact(link: string) {
     flex-direction: column;
     gap: 6vh;
     padding-right: 10%;
+    overflow: hidden;
 
     &--send {
       font-size: 1.4rem;
@@ -197,6 +198,44 @@ function clickContact(link: string) {
         gap: 10px;
         cursor: pointer;
         font-weight: 400;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contact-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    font-size: 12px;
+    
+    &__details {
+      padding-bottom: 4rem;
+
+      &--item {
+        gap: 5px;
+        line-height: 12px;
+      }
+    }
+
+    &__form {
+      width: 100%;
+
+      &--field {
+        label {
+          font-size: 16px;
+          gap: 1rem;
+        }
+
+        input, textarea {
+          font-size: 13px;
+          border-bottom: 2px solid #4A2C2A;
+        }
+      }
+
+      &--send {
+        font-size: 1.1rem;
       }
     }
   }
