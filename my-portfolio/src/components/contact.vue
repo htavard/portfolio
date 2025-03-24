@@ -118,7 +118,7 @@ function clickContact(link: string) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   min-height: 80vh;
 
   &__form {
@@ -197,7 +197,6 @@ function clickContact(link: string) {
         gap: 10px;
         cursor: pointer;
         font-weight: 400;
-
       }
     }
   }

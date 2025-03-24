@@ -153,6 +153,23 @@ function clickContact(link: string) {
   transform: translate(-20px);
 }
 
+@media screen and (max-width: 1200px) {
+  .header {
+    display: flex;
+    &__title {
+      font-size: 16px;
+    }
+
+    &__content {
+      &--presentation {
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
 // .falling {
 //   width:90vw;
 //   overflow-x: hidden;

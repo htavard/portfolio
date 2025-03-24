@@ -1,8 +1,8 @@
 <template>
-  <div class="noise-background"></div>
+  <!-- <div class="noise-background"></div> -->
   <!-- <particleEffect /> -->
   <navbar @scroll="scrollIntoView" />
-  <div class="container" id="top-page">
+  <div class="container" id="top-page" >
     <div class="container__header">
       <headerPresentation />
       <navButtons @scroll="scrollIntoView" />
@@ -106,7 +106,7 @@ categorySkills()
   padding: 0 5vw;
 
   &__header {
-    height: 100dvh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     gap: 10%;
@@ -161,19 +161,19 @@ categorySkills()
   transition: transform 0.3s ease-in-out;
 }
 
-.noise-background {
-  animation: noise 1.2s steps(3) infinite both;
-  background-image: url("../src/assets/pictures/noise.png");
-  height: 200%;
-  left: -50%;
-  opacity: 0.1;
-  pointer-events: none;
-  position: fixed;
-  top: -50%;
-  width: 200%;
-  will-change: auto;
-  z-index: 100;
-}
+// .noise-background {
+//   animation: noise 1.2s steps(3) infinite both;
+//   background-image: url("../src/assets/pictures/noise.png");
+//   height: 200%;
+//   left: -50%;
+//   opacity: 0.1;
+//   pointer-events: none;
+//   position: fixed;
+//   top: -50%;
+//   width: 200%;
+//   will-change: auto;
+//   z-index: 100;
+// }
 
 h2 {
   padding-top: 110px; //navbar height

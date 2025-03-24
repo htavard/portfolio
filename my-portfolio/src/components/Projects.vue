@@ -11,27 +11,27 @@
         <strong>{{ project.name }}</strong>
         <p>{{ project.description }}</p>
       </div>
-      <div class="tag-container" :style="{ bottom: `calc(-${bottomPx / 2}px - 1rem)` }">
+      <div class="tag-container">
         <ul class="project-tags"
           :class="{ 'animation-right': project.orientation === 'right', 'animation-left': project.orientation === 'left' }">
           <li class="project-tags__item" v-for="tag in project.tags" :key="tag.name">
-            <img v-if="tag.icon" :src="tag.icon" width="30px" height="30px" lazy="true">
+            <img v-if="tag.icon" :src="tag.icon" lazy="true">
             <span>{{ tag.name }}</span>
           </li>
           <li class="project-tags__item" v-for="tag in project.tags" :key="tag.name" aria-hidden="true">
-            <img v-if="tag.icon" :src="tag.icon" width="30px" height="30px" lazy="true">
+            <img v-if="tag.icon" :src="tag.icon" lazy="true">
             <span>{{ tag.name }}</span>
           </li>
           <li class="project-tags__item" v-for="tag in project.tags" :key="tag.name" aria-hidden="true">
-            <img v-if="tag.icon" :src="tag.icon" width="30px" height="30px" lazy="true">
+            <img v-if="tag.icon" :src="tag.icon" lazy="true">
             <span>{{ tag.name }}</span>
           </li>
           <li class="project-tags__item" v-for="tag in project.tags" :key="tag.name" aria-hidden="true">
-            <img v-if="tag.icon" :src="tag.icon" width="30px" height="30px" lazy="true">
+            <img v-if="tag.icon" :src="tag.icon" lazy="true">
             <span>{{ tag.name }}</span>
           </li>
           <li class="project-tags__item" v-for="tag in project.tags" :key="tag.name" aria-hidden="true">
-            <img v-if="tag.icon" :src="tag.icon" width="30px" height="30px" lazy="true">
+            <img v-if="tag.icon" :src="tag.icon" lazy="true">
             <span>{{ tag.name }}</span>
           </li>
         </ul>
@@ -45,25 +45,11 @@ defineProps({
   projectList: { type: Object as PropType<Project[]>, default: null }
 })
 
-const bottomPx = ref<number>(0)
-
 function openLink(project: Project) {
 
   window.open(project.links[0])
 
 }
-
-function adjustBottomTagPosition() {
-  const titleBox = document.getElementById('titleBox')
-
-  bottomPx.value = titleBox.scrollHeight
-}
-
-onMounted(() => {
-
-  nextTick(() => { adjustBottomTagPosition() })
-
-})
 
 function handleMouseEnter(index: number) {
   document.getElementById(`goto-${index}`).style.opacity = '1'
@@ -149,8 +135,8 @@ function handleMouseLeave(index: number) {
   position: absolute;
   display: flex;
   overflow: hidden;
-  gap: 1rem;
   cursor: default;
+  bottom: calc(-15% - 0.95rem);
   width: 100%;
 
   .project-tags {
@@ -180,6 +166,11 @@ function handleMouseLeave(index: number) {
       padding: 10px 20px;
       border-radius: 60px;
       text-transform: uppercase;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
@@ -196,5 +187,66 @@ function handleMouseLeave(index: number) {
     transform: translateX(calc(-20% - 0.2rem));
   }
 
+}
+
+@media screen and (max-width: 1000px) {
+  .project {
+    &__item {
+      &.left, &.right {
+        transform: none !important;
+      }
+      &--img {
+        filter: brightness(0.6);
+        
+        &__titlebox {
+          top: 90%;
+          left: 5% !important;
+          width: 90%;
+          height: 20%;
+        }
+      }
+    }
+  }
+
+  .tag-container {
+    bottom: calc(-20% - 1.95rem);
+    .project-tags {
+      height: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .project {
+
+    &__item {
+      width: 70vw;
+    }
+
+    .tag-container {
+      bottom: calc(-20% - 1rem);
+
+      .project-tags {
+        height: 30px;
+
+        &__item {
+          font-size: 12px;
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .project {
+    &__item {
+      width: 85vw;
+    }
+  }
+  
 }
 </style>
