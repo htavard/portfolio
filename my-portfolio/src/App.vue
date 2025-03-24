@@ -17,10 +17,10 @@
     <section class="container__skills">
       <h2 id="skills">Skills</h2>
       <div class="skill-list" id="skillsGroupList">
-        <skills-view :category="ESkillCategory.TECHNOLOGY" :container-width="skillsWidth" />
+        <skills-view :category="ESkillCategory.TECHNOLOGY" :container-width="skillsWidth" :is-small-format="skillsWidth < 885 "/>
         <div class="skill-list__other">
-          <skills-view :category="ESkillCategory.DESIGN" :container-width="skillsWidth/2" />
-          <skills-view :category="ESkillCategory.TOOL" :container-width="skillsWidth/2" />
+          <skills-view class="skill-list__other--item" :category="ESkillCategory.DESIGN" :container-width="skillsWidth/2" :is-small-format="skillsWidth < 885 " />
+          <skills-view class="skill-list__other--item" :category="ESkillCategory.TOOL" :container-width="skillsWidth/2"  :is-small-format="skillsWidth < 885 " />
         </div>
       </div>
     </section>
@@ -120,7 +120,7 @@ categorySkills()
   }
 
   &__skills {
-    margin: 10vh 0;
+    margin: 15vh 0;
 
     h2 {
       margin-bottom: 5%;
@@ -184,5 +184,19 @@ h2 {
   display: flex;
   gap: 5vw;
   width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .skill-list {
+    &__other {
+      display: flex;
+      justify-content: center;
+      
+      &--item {
+        flex: 1;
+      }
+    }
+  }
+  
 }
 </style>

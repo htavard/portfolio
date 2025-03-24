@@ -93,7 +93,7 @@ function handleMouseLeave(index: number) {
         top: 85%;
         height: 30%;
         width: 50%;
-        z-index: 1000000;
+        z-index: 100;
         padding: 10px 20px;
         box-sizing: border-box;
         text-align: center;

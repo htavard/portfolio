@@ -1,8 +1,8 @@
 <template>
   <div class="list-container" id="containerList">
     <h3 class="category">{{ category }}</h3>
-    <div class="skills" id="skillList" v-if="skills">
-      <div class="skills__item" v-for="(skill, index) in skills" :key="skill.name"
+    <div :class="isSmallFormat ? `skills-small` : `skills`" id="skillList" v-if="skills">
+      <div :class="isSmallFormat ? `skills-small__item` : `skills__item`" v-for="(skill, index) in skills" :key="skill.name"
         :id="`skillItem-${index}-${category}`" @mouseenter="removeMarginOnHover(index)"
         @mouseleave="applyMarginOnLeave(index)">
         <span class="skills__item--icon"><img :src="skill.icon" :alt="skill.name"
@@ -19,7 +19,8 @@ import { ESkillCategory } from '../types/enums';
 
 const props = defineProps({
   category: { type: String as PropType<ESkillCategory>, default: null },
-  containerWidth: { type: Number, default: 0 }
+  containerWidth: { type: Number, default: 0 },
+  isSmallFormat: { type: Boolean, default: false }
 })
 const skillsWidth = ref<number>(props.containerWidth)
 const itemWidth = ref<number[]>([])
@@ -74,9 +75,10 @@ function checkLinesAndLastIcons() {
     document.getElementById(`skillItem-${skills.value.length - 2}-${props.category}`).style.marginRight = "0px"
   }
 }
-  
+
 
 function removeMarginOnHover(index: number) {
+  if(props.isSmallFormat) return
   let flag = false
 
   for (let i = 0; i < problematicIndexes.value.length; i++) {
@@ -88,6 +90,7 @@ function removeMarginOnHover(index: number) {
 }
 
 function applyMarginOnLeave(index: number) {
+  if(props.isSmallFormat) return
   let flag = false
 
   for (let i = 0; i < problematicIndexes.value.length; i++) {
@@ -102,11 +105,14 @@ function applyMarginOnLeave(index: number) {
 watch(() => props.containerWidth,
   (newValue) => {
     skillsWidth.value = newValue
-    nextTick(() => {
-      resetMargins()
-      initializeWidth()
-      checkLinesAndLastIcons()
-    })
+    nextTick(() => resetMargins())
+    if (!props.isSmallFormat) {
+      nextTick(() => {
+        initializeWidth()
+        checkLinesAndLastIcons()
+      })
+    }
+
   }, { immediate: true })
 </script>
 
@@ -142,7 +148,7 @@ watch(() => props.containerWidth,
     align-items: center;
     transition: all 0.3s ease;
     overflow: hidden;
-    margin-bottom: 8vh;
+    margin-bottom: 40px;
 
     &::before {
       content: "";
@@ -214,6 +220,29 @@ watch(() => props.containerWidth,
   }
 }
 
+.skills-small {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__item {
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .category {
+    margin-top: -5px;
+  }
+}
 
 // .skills:hover {
 //   flex-wrap: nowrap;
