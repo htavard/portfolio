@@ -202,4 +202,11 @@ h2 {
   }
   
 }
+
+@media screen and (max-width:1150px) {
+  .scroll-to-top{
+    left: 90vw;
+  }
+  
+}
 </style>
