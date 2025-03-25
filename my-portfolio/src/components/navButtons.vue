@@ -52,6 +52,7 @@ const emit = defineEmits(
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  gap: 2rem;
   height: 100%;
 
   &__list {

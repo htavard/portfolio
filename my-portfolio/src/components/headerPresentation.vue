@@ -94,7 +94,7 @@ watch(() => props.containerWidth,
         align-items: center;
         gap: 10%;
         margin-top: 10%;
-        margin-left: 10%;
+        justify-content: space-between;
 
         >img {
           width: 50px;
@@ -213,13 +213,13 @@ watch(() => props.containerWidth,
     display: flex;
 
     &__title {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     &__content {
       &--presentation {
         p {
-          font-size: 15px;
+          font-size: 17px;
         }
       }
 
@@ -254,6 +254,10 @@ watch(() => props.containerWidth,
         width: 100%;
         max-width: 80vw;
         gap: 2rem;
+
+        p{
+          font-size: 18px;
+        }
 
         &__contact {
           display: flex;

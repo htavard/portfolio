@@ -1,11 +1,9 @@
 <template>
-  <!-- <div class="noise-background"></div> -->
-  <!-- <particleEffect /> -->
-  <navbar @scroll="scrollIntoView" />
-  <div class="container" id="top-page" >
+  <navbar @scroll="scrollIntoView" @blur="handleBlur" :is-mobile="sectionWidth + 77 < 769"/>
+  <div class="container" id="top-page" :style="{filter: shouldBlur ? 'blur(4px)':'none'}">
     <div class="container__header" id="header">
       <headerPresentation />
-      <navButtons v-if="sectionWidth + 93 > 768" @scroll="scrollIntoView" />
+      <navButtons v-if="sectionWidth + 77 > 768" @scroll="scrollIntoView" />
     </div>
 
 
@@ -30,7 +28,7 @@
       <contact ref="form" />
     </section>
 
-    <button class="scroll-to-top" @click="scrollIntoView('top-page')" title="Scroll to top">
+    <button v-if="sectionWidth + 77 > 768" class="scroll-to-top" @click="scrollIntoView('top-page')" title="Scroll to top">
       <svg xmlns="http://www.w3.org/2000/svg" title="Scroll to top" viewBox="-5 -7.5 24 24" width="40"
         fill="currentColor">
         <path
@@ -58,6 +56,7 @@ const designSKill = ref<SkillTag[]>([])
 const toolSKill = ref<SkillTag[]>([])
 
 const sectionWidth = ref<number>(0)
+const shouldBlur = ref<boolean>(false)
 
 const resizeObserver = new ResizeObserver((entrySizes) => {
   entrySizes.forEach(() => {
@@ -74,6 +73,10 @@ onMounted(() => {
 onUnmounted(() => {
   resizeObserver.disconnect()
 })
+
+function handleBlur(isActive: boolean) {
+  shouldBlur.value = isActive
+}
 
 function categorySkills() {
   skillList.forEach((s) => {
@@ -102,6 +105,8 @@ categorySkills()
   display: flex;
   flex-direction: column;
   padding: 0 5vw;
+  transition: filter 0.5s ease-in-out;
+  padding-bottom: 2rem;
 
   &__header {
     min-height: 100dvh;
@@ -114,7 +119,7 @@ categorySkills()
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    gap: 5%;
+    gap: 2rem;
   }
 
   &__skills {

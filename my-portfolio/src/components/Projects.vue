@@ -199,10 +199,10 @@ function handleMouseLeave(index: number) {
         filter: brightness(0.6);
         
         &__titlebox {
-          top: 90%;
+          top: 85%;
           left: 5% !important;
           width: 90%;
-          height: 20%;
+          height: 25%;
         }
       }
     }
