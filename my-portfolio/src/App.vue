@@ -3,9 +3,9 @@
   <!-- <particleEffect /> -->
   <navbar @scroll="scrollIntoView" />
   <div class="container" id="top-page" >
-    <div class="container__header">
+    <div class="container__header" id="header">
       <headerPresentation />
-      <navButtons @scroll="scrollIntoView" />
+      <navButtons v-if="sectionWidth + 93 > 768" @scroll="scrollIntoView" />
     </div>
 
 
@@ -17,10 +17,10 @@
     <section class="container__skills">
       <h2 id="skills">Skills</h2>
       <div class="skill-list" id="skillsGroupList">
-        <skills-view :category="ESkillCategory.TECHNOLOGY" :container-width="skillsWidth" :is-small-format="skillsWidth < 885 "/>
+        <skills-view :category="ESkillCategory.TECHNOLOGY" :container-width="sectionWidth" :is-small-format="sectionWidth < 885 "/>
         <div class="skill-list__other">
-          <skills-view class="skill-list__other--item" :category="ESkillCategory.DESIGN" :container-width="skillsWidth/2" :is-small-format="skillsWidth < 885 " />
-          <skills-view class="skill-list__other--item" :category="ESkillCategory.TOOL" :container-width="skillsWidth/2"  :is-small-format="skillsWidth < 885 " />
+          <skills-view class="skill-list__other--item" :category="ESkillCategory.DESIGN" :container-width="sectionWidth/2" :is-small-format="sectionWidth < 885 " />
+          <skills-view class="skill-list__other--item" :category="ESkillCategory.TOOL" :container-width="sectionWidth/2"  :is-small-format="sectionWidth < 885 " />
         </div>
       </div>
     </section>
@@ -38,8 +38,6 @@
         </path>
       </svg>
     </button>
-
-    <!-- <test /> -->
   </div>
 </template>
 
@@ -59,18 +57,18 @@ const technologySKill = ref<SkillTag[]>([])
 const designSKill = ref<SkillTag[]>([])
 const toolSKill = ref<SkillTag[]>([])
 
-const skillsWidth = ref<number>(0)
+const sectionWidth = ref<number>(0)
 
 const resizeObserver = new ResizeObserver((entrySizes) => {
   entrySizes.forEach(() => {
-    skillsWidth.value = document.getElementById('skillsGroupList').clientWidth
+    sectionWidth.value = document.getElementById('skillsGroupList').clientWidth
   })
 })
 
 onMounted(() => {
   const element = document.getElementById('skillsGroupList')
   resizeObserver.observe(element)
-  skillsWidth.value = element.clientWidth
+  sectionWidth.value = element.clientWidth
 })
 
 onUnmounted(() => {
