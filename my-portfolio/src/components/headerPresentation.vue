@@ -270,6 +270,7 @@ watch(() => props.containerWidth,
 
     .header-wrapper {
       align-items: center;
+      margin-bottom: 20%;
 
     }
   }

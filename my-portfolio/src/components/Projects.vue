@@ -192,12 +192,15 @@ function handleMouseLeave(index: number) {
 @media screen and (max-width: 1000px) {
   .project {
     &__item {
-      &.left, &.right {
+
+      &.left,
+      &.right {
         transform: none !important;
       }
+
       &--img {
         filter: brightness(0.6);
-        
+
         &__titlebox {
           top: 85%;
           left: 5% !important;
@@ -210,6 +213,7 @@ function handleMouseLeave(index: number) {
 
   .tag-container {
     bottom: calc(-20% - 1.95rem);
+
     .project-tags {
       height: 40px;
     }
@@ -231,6 +235,7 @@ function handleMouseLeave(index: number) {
 
         &__item {
           font-size: 12px;
+
           img {
             width: 20px;
             height: 20px;
@@ -247,6 +252,19 @@ function handleMouseLeave(index: number) {
       width: 85vw;
     }
   }
-  
+
+}
+
+@media screen and (max-height: 1000px) and (min-width:1001px) {
+  .project {
+    &__item {
+      &--img {
+        &__titlebox {
+          height: 40%;
+        }
+      }
+    }
+  }
+
 }
 </style>

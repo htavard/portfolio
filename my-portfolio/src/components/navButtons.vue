@@ -124,4 +124,17 @@ const emit = defineEmits(
     }
   }
 }
+
+@media screen and (max-width: 1150px) 
+{
+  .nav-buttons{
+    width: 60vw;
+  }
+}
+@media screen and (max-width: 950px) 
+{
+  .nav-buttons{
+    width: 74vw;
+  }
+}
 </style>
