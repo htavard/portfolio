@@ -9,10 +9,10 @@
     </ul>
 
     <ul class="navbar-side-links" v-if="isMobile" :class="{ visible: isActive }">
-      <li @click="emit('scroll', 'top-page')"><strong>About</strong></li>
-      <li @click="emit('scroll', 'projects')"><strong>Projects</strong></li>
-      <li @click="emit('scroll', 'skills')"><strong>Skills</strong></li>
-      <li @click="emit('scroll', 'contact')"><strong>Contact</strong></li>
+      <li @click="handleSideClick('top-page')"><strong>About</strong></li>
+      <li @click="handleSideClick('projects')"><strong>Projects</strong></li>
+      <li @click="handleSideClick('skills')"><strong>Skills</strong></li>
+      <li @click="handleSideClick('contact')"><strong>Contact</strong></li>
       <li class="navbar-side-links__contact">
 
         <div class="navbar-side-links__contact--socials">
@@ -107,6 +107,11 @@ onMounted(() => {
   })
 })
 
+function handleSideClick(location: string) {
+  isActive.value = false
+  emit('scroll', location)
+}
+
 function clickContact(link: string) {
   window.open(link)
 }
@@ -158,6 +163,11 @@ watch(() => isActive.value,
 }
 
 .navbar-side-links {
+  --mask:
+    radial-gradient(34.8px at 49.2px 50%,#000 99%,#0000 101%) 0 calc(50% - 48px)/100% 96px,
+    radial-gradient(34.8px at -25.2px 50%,#0000 99%,#000 101%) 24px 50%/100% 96px repeat-y;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
   position: fixed;
   display: flex;
   flex-direction: column;
