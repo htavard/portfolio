@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar" id="navbar">
-    <h1 class="navbar__title" @click="emit('scroll', 'top-page')">Hugo Tavard</h1>
+  <nav class="navbar" id="navbar" ref="wholeNavbar">
+    <h1 class="navbar__title" @click="handleSideClick('top-page')">Hugo Tavard</h1>
 
     <div class="navbar-links-container">
       <ul class="lang">
@@ -19,7 +19,7 @@
       </ul>
     </div>
 
-    <div ref="navbarSide">
+    <div>
       <ul class="navbar-side-links" v-if="isMobile" :class="{ visible: isActive }">
         <li @click="handleSideClick('top-page')"><strong>{{ $t('about') }}</strong></li>
         <li @click="handleSideClick('projects')"><strong>{{ $t('projects') }}</strong></li>
@@ -80,7 +80,7 @@
     </div>
     <div style="height: 50px;">
       <svg v-if="isMobile" class="hamb hamb-rotate hamb1" :class="{ active: isActive }" width="50px" height="50px"
-        viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" @click="isActive = !isActive">
+        viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" @click="handleToggleSidebar">
         <path class="line top"
           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"
           stroke="#000000" stroke-width="2" stroke-linecap="round" />
@@ -96,6 +96,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { onClickOutside } from '@vueuse/core'
+import { handleError } from 'vue'
 const { locale } = useI18n()
 
 const baseUrl = process.env.NODE_ENV === 'production'
@@ -111,12 +112,16 @@ defineProps({
 })
 
 const isActive = shallowRef<boolean>(false)
-const navbarSide = useTemplateRef('navbarSide')
+const wholeNavbar = useTemplateRef('wholeNavbar')
 
-onClickOutside(navbarSide, () => {
-  
+onClickOutside(wholeNavbar, () => {
+
   isActive.value = false
 })
+
+function handleToggleSidebar() {
+  isActive.value = !isActive.value
+}
 
 onMounted(() => {
   document.addEventListener('scroll', () => {
