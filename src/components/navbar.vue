@@ -118,12 +118,11 @@ onMounted(() => {
 
 
     const border = `3px solid rgba(${startColor[0]}, ${startColor[1]}, ${startColor[2]}, ${progress})`
-
-    navbar.style.borderBottom = border
+    if(navbar) navbar.style.borderBottom = border
   })
 })
 
-function switchLang(lang) {
+function switchLang(lang: string) {
   locale.value = lang
   localStorage.setItem('user-lang', lang)
 }

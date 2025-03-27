@@ -65,10 +65,10 @@ const { t } = useI18n()
 const name = ref<string>('')
 const email = ref<string>('')
 const message = ref<string>('')
-const nameInput = ref(null)
+const nameInput = ref<HTMLElement>()
 
 function focusFirstInput() {
-  nameInput.value.focus()
+  if(nameInput.value) nameInput.value.focus()
 }
 
 defineExpose({

@@ -13,7 +13,7 @@
   "yourEmail" : "What's your email ?",
   "yourMessage" : "Your message",
   "placeholderName" : "John Doe",
-  "placeholderEmail" : "johndoe@gmail.com",
+  "placeholderEmail" : "johndoe{'@'}gmail.com",
   "placeholderMessage" : "Write here what you wish to contact me for...",
   "send": "SEND",
   "contactDetails" : "Contact details",

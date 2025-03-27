@@ -50,7 +50,7 @@ import { projectData } from './data/projects';
 import { skillList } from './data/skills';
 import { ESkillCategory } from './types/enums';
 
-const form = ref(null)
+const form = ref<InstanceType<typeof contact> | null>(null)
 const technologySKill = ref<SkillTag[]>([])
 const designSKill = ref<SkillTag[]>([])
 const toolSKill = ref<SkillTag[]>([])
@@ -60,12 +60,14 @@ const shouldBlur = ref<boolean>(false)
 
 const resizeObserver = new ResizeObserver((entrySizes) => {
   entrySizes.forEach(() => {
-    sectionWidth.value = document.getElementById('skillsGroupList').clientWidth
+    const element = document.getElementById('skillsGroupList')
+    if(element) sectionWidth.value = element.clientWidth
   })
 })
 
 onMounted(() => {
   const element = document.getElementById('skillsGroupList')
+  if(!element) return
   resizeObserver.observe(element)
   sectionWidth.value = element.clientWidth
 })
@@ -88,10 +90,11 @@ function categorySkills() {
 
 function scrollIntoView(section: TSection) {
   const element = document.getElementById(section)
+  if(element)
   element.scrollIntoView({ behavior: "smooth" })
 
   setTimeout(() => {
-    if (section === "contact") form.value.focusFirstInput()
+    if (section === "contact" && form.value) form.value.focusFirstInput()
   }, 300)
 }
 

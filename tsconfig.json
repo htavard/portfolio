@@ -13,7 +13,10 @@
   ],
   "compilerOptions": {
     "types": ["vite/client", "vue"],
-    "noEmit": false,
+    "noEmit": true,
+    "strict": true,
+    "allowJs": false,
+    "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue","src/auto-imports.d.ts"]
 }

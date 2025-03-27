@@ -52,13 +52,17 @@ function openLink(project: Project) {
 }
 
 function handleMouseEnter(index: number) {
-  document.getElementById(`goto-${index}`).style.opacity = '1'
-  document.getElementById(`project-${index}`).style.filter = 'blur(5px) grayscale(50%)'
+  const element1 = document.getElementById(`goto-${index}`)
+  const element2 = document.getElementById(`project-${index}`)
+  if(element1) element1.style.opacity = '1'
+  if(element2) element2.style.filter = 'blur(5px) grayscale(50%)'
 }
 
 function handleMouseLeave(index: number) {
-  document.getElementById(`goto-${index}`).style.opacity = '0'
-  document.getElementById(`project-${index}`).style.filter = 'none'
+  const element1 = document.getElementById(`goto-${index}`)
+  const element2 = document.getElementById(`project-${index}`)
+  if(element1) element1.style.opacity = '0'
+  if(element2) element2.style.filter = 'none'
 }
 
 </script>

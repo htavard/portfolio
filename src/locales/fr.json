@@ -13,7 +13,7 @@
   "yourEmail" : "Quel est votre email ?",
   "yourMessage" : "Votre message",
   "placeholderName" : "Alice Durand",
-  "placeholderEmail" : "alice@exemple.fr",
+  "placeholderEmail" : "alice{'@'}exemple.fr",
   "placeholderMessage" : "Écrivez votre message ici...",
   "send": "ENVOYER",
   "contactDetails" : "Contactez-moi",

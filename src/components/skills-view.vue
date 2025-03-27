@@ -58,7 +58,8 @@ function initializeWidth() {
 
 function resetMargins() {
   for (let i = 0; i < skills.value.length; i++) {
-    document.getElementById(`skillItem-${i}-${props.category}`).style.marginRight = "0px"
+    const element = document.getElementById(`skillItem-${i}-${props.category}`)
+    if(element) element.style.marginRight = "0px"
   }
 }
 
@@ -69,23 +70,58 @@ function checkLinesAndLastIcons() {
   isLastLineOneElement.value = false
   let itemInPreviousLines = 0
   let numberOfItemLastLine = 0
-  const boxStyle = window.getComputedStyle(document.getElementById('containerList'))
-  const boxPadding = parseFloat(boxStyle.paddingLeft) + parseFloat(boxStyle.paddingRight)
+
+  const container = document.getElementById("containerList")
+  if (!container) return // Ensure containerList exists before proceeding
+
+  const boxStyle = window.getComputedStyle(container)
+  const boxPadding =
+    parseFloat(boxStyle.paddingLeft) + parseFloat(boxStyle.paddingRight)
+
   for (let j = 0; j < skills.value.length; j++) {
-    if ((j - itemInPreviousLines + 1) * 60 + (j - itemInPreviousLines) * 50 + 120 >= (skillsWidth.value - boxPadding)) {
+    if (
+      (j - itemInPreviousLines + 1) * 60 +
+        (j - itemInPreviousLines) * 50 +
+        120 >=
+      skillsWidth.value - boxPadding
+    ) {
       itemInPreviousLines = j
-      problematicElements.value.push(document.getElementById(`skillItem-${j - 1}-${props.category}`))
-      problematicIndexes.value.push(j - 1)
-      document.getElementById(`skillItem-${j - 1}-${props.category}`).style.marginRight = "120px"
+
+      const skillItem = document.getElementById(
+        `skillItem-${j - 1}-${props.category}`
+      )
+      if (skillItem) {
+        problematicElements.value.push(skillItem)
+        problematicIndexes.value.push(j - 1)
+        skillItem.style.marginRight = "120px"
+      }
+
       numberOfItemLastLine = itemInPreviousLines / problematicElements.value.length
     }
   }
-  if (numberOfItemLastLine && skills.value.length % numberOfItemLastLine === 1 && skills.value.length > 3) {
+
+  if (
+    numberOfItemLastLine &&
+    skills.value.length % numberOfItemLastLine === 1 &&
+    skills.value.length > 3
+  ) {
     isLastLineOneElement.value = true
     problematicElements.value.pop()
-    problematicElements.value.push(document.getElementById(`skillItem-${skills.value.length - 3}-${props.category}`))
-    document.getElementById(`skillItem-${skills.value.length - 3}-${props.category}`).style.marginRight = "240px"
-    document.getElementById(`skillItem-${skills.value.length - 2}-${props.category}`).style.marginRight = "0px"
+
+    const skillItemPrev = document.getElementById(
+      `skillItem-${skills.value.length - 3}-${props.category}`
+    )
+    if (skillItemPrev) {
+      problematicElements.value.push(skillItemPrev)
+      skillItemPrev.style.marginRight = "240px"
+    }
+
+    const skillItemLast = document.getElementById(
+      `skillItem-${skills.value.length - 2}-${props.category}`
+    )
+    if (skillItemLast) {
+      skillItemLast.style.marginRight = "0px"
+    }
   }
 }
 
