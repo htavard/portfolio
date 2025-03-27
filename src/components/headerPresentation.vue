@@ -14,7 +14,7 @@
               @click="clickContact('https://www.linkedin.com/in/hugo-tavard-developper/')" title="Linkedin">
             <img src="../assets/pictures/icons/github.png" alt="logo Github"
               @click="clickContact('https://github.com/htavard')" title="Github">
-            <a href="../assets/files/ht_dev_resume_en.pdf" download style="display: flex;">
+            <a :href="`../assets/files/${$t('resumeLang')}`" download style="display: flex;">
               <button class="dl-resume">
                 <span class="dl-resume__left">
                   <img src="../assets/pictures/resume.png" alt="resume icon" width="25px" height="25px">

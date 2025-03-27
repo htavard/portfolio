@@ -21,6 +21,7 @@
   "socials" : "Socials",
   "sendFormVerif":"Please fill out all fields",
   "sendFormAccept": "Email sent successfully!",
+  "resumeLang": "ht_dev_resume_en.pdf",
   "projectDescList": {
     "ValueMyCar": "Connect professionals and automobilists for car maintenance",
     "LaytonStories": "Enter Professor Layton's universe !",

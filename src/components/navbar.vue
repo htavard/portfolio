@@ -61,7 +61,7 @@
 
       </li>
       <li>
-        <a href="../assets/files/ht_dev_resume_en.pdf" download class="navbar-side-links__download"><svg width="50px"
+        <a :href="`../assets/files/${$t('resumeLang')}`" download class="navbar-side-links__download"><svg width="50px"
             height="50px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#F9E0BB"
             transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -118,7 +118,7 @@ onMounted(() => {
 
 
     const border = `3px solid rgba(${startColor[0]}, ${startColor[1]}, ${startColor[2]}, ${progress})`
-    if(navbar) navbar.style.borderBottom = border
+    if (navbar) navbar.style.borderBottom = border
   })
 })
 
@@ -259,10 +259,14 @@ watch(() => isActive.value,
 
   li {
     cursor: pointer;
+  }
+}
 
-    a:visited {
-      color: #F9E0BB;
-    }
+.navbar-side-links li a {
+  color: #F9E0BB;
+
+  &:visited {
+    color: #F9E0BB !important;
   }
 }
 
@@ -277,12 +281,12 @@ watch(() => isActive.value,
 }
 
 @media screen and (max-width: 1000px) {
-  .navbar{
+  .navbar {
     &__title {
       font-size: 1.5rem;
     }
   }
-  
+
 }
 
 
@@ -292,6 +296,7 @@ watch(() => isActive.value,
 
     .navbar-links-container {
       flex: 1;
+
       .lang {
         padding-right: 2vw;
       }
@@ -304,11 +309,12 @@ watch(() => isActive.value,
 }
 
 @media screen and (max-width: 650px) {
-  .navbar{
+  .navbar {
     &__title {
       flex: 2;
     }
   }
+
   .navbar-side-links {
     padding-left: 4rem;
     width: calc(30% + 5rem);
@@ -317,16 +323,16 @@ watch(() => isActive.value,
 }
 
 @media screen and (max-width: 400px) {
-  .navbar{
+  .navbar {
     &__title {
       font-size: 1.25rem;
     }
   }
 
-  .navbar-side-links{
+  .navbar-side-links {
     right: -75%;
   }
-  
+
 }
 
 .hamb {
