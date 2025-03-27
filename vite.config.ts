@@ -57,12 +57,14 @@ export default defineConfig({
     assetsDir: 'assets',
     emptyOutDir: true,
     rollupOptions: {
-      input: {
-        main: fileURLToPath(new URL('./index.html', import.meta.url))
-      },
       output: {
-        assetFileNames: 'assets/[name]-[hash][extname]',
-        entryFileNames: 'assets/[name]-[hash].js'
+        // Add this to prevent HTML being treated as JS
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.html')) {
+            return '[name][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        }
       }
     }
   }
