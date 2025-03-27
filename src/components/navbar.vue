@@ -256,15 +256,7 @@ watch(() => isActive.value,
 @media screen and (max-width: 650px) 
 {
   .navbar-side-links {
-    padding-left: 2rem;
-    width: calc(30% + 2rem);
-  }
-}
-
-@media screen and (max-width: 650px) 
-{
-  .navbar-side-links {
-    padding-left: 2rem;
+    padding-left: 4rem;
     width: calc(30% + 5rem);
     right: -65%;
   }
