@@ -7,8 +7,8 @@ import { writeFileSync } from 'node:fs'
 
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/portfolio/' : '/',
-    appType: 'spa',
-  assetsInclude: ['**/*.html'],
+  appType: 'spa',
+  // assetsInclude: ['**/*.html'],
   optimizeDeps: {
     exclude: ['@vue/devtools-kit'], 
   },
@@ -56,19 +56,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    emptyOutDir: true,
-    rollupOptions: {
-      input: fileURLToPath(new URL('./index.html', import.meta.url)),
-      output: {
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.html')) {
-            return '[name][extname]' // Keep HTML at root without hash
-          }
-          return 'assets/[name]-[hash][extname]'
-        }
-      }
-    }
+    // emptyOutDir: true,
+    // rollupOptions: {
+    //   input: fileURLToPath(new URL('./index.html', import.meta.url)),
+    // output: {
+    //   assetFileNames: 'assets/[name]-[hash][extname]',
+    //   entryFileNames: 'assets/[name]-[hash].js',
+    //   chunkFileNames: 'assets/[name]-[hash].js'
+    // }
+    // }
   }
 })
