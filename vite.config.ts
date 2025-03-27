@@ -58,8 +58,10 @@ export default defineConfig({
     assetsDir: 'assets',
     emptyOutDir: true,
     rollupOptions: {
-
+      input: fileURLToPath(new URL('./index.html', import.meta.url)),
       output: {
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
           if (assetInfo.name?.endsWith('.html')) {
             return '[name][extname]' // Keep HTML at root without hash
