@@ -7,6 +7,7 @@ import { writeFileSync } from 'node:fs'
 
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/portfolio/' : '/',
+    appType: 'spa',
   assetsInclude: ['**/*.html'],
   optimizeDeps: {
     exclude: ['@vue/devtools-kit'], 
@@ -57,11 +58,11 @@ export default defineConfig({
     assetsDir: 'assets',
     emptyOutDir: true,
     rollupOptions: {
+
       output: {
-        // Add this to prevent HTML being treated as JS
         assetFileNames: (assetInfo) => {
           if (assetInfo.name?.endsWith('.html')) {
-            return '[name][extname]'
+            return '[name][extname]' // Keep HTML at root without hash
           }
           return 'assets/[name]-[hash][extname]'
         }
