@@ -2,15 +2,12 @@
   <header class="header" id="header">
     <div class="header-wrapper">
       <div class="header__title">
-        <h2>Full-Stack Developer | Vue Enthusiast</h2>
+        <h2>{{ $t('headerTitle1') }}|{{ $t('headerTitle2') }}</h2>
       </div>
       <div class="header__content">
         <div class="header__content--presentation">
           <p>
-            Hello! I'm Hugo Tavard, a cognitive engineer specializing in web development based in France.
-            Cognitive sciences are for me a mean to understand users and create user-friendly,
-            visually appealing websites for them. I thrive on learning new skills while continuously improving the ones
-            I already have.
+            {{ $t('headerPresentation') }}
           </p>
           <div class="header__content--presentation__contact">
             <img src="../assets/pictures/icons/linkedin.png" alt="logo Linkedin"
@@ -82,10 +79,9 @@ watch(() => props.containerWidth,
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 15dvw;
 
     &--presentation {
-      max-width: 40vw;
+      max-width: 80%;
       font-size: 20px;
 
 
@@ -94,7 +90,7 @@ watch(() => props.containerWidth,
         align-items: center;
         gap: 10%;
         margin-top: 10%;
-        justify-content: space-between;
+        justify-content: space-around;
 
         >img {
           width: 50px;
@@ -234,6 +230,7 @@ watch(() => props.containerWidth,
     }
   }
 }
+
 
 @media screen and (max-width: 768px) {
   .header {

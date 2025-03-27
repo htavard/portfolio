@@ -2,28 +2,28 @@
   <div class="contact-container">
     <form class="contact-container__form" @submit.prevent="sendMailNoWindow">
       <div class="contact-container__form--field">
-        <label>What's your name ?
-          <input v-model="name" type="text" placeholder="John Doe" ref="nameInput" />
+        <label>{{ $t('yourName') }}
+          <input v-model="name" type="text" :placeholder="$t('placeholderName')" ref="nameInput" />
         </label>
       </div>
 
       <div class="contact-container__form--field">
-        <label>What's your email ?
-          <input v-model="email" type="email" placeholder="johndoe@gmail.com" />
+        <label>{{ $t('yourEmail') }}
+          <input v-model="email" type="email" :placeholder="$t('placeholderEmail')" />
         </label>
 
       </div>
       <div class="contact-container__form--field">
-        <label>Your message
-          <textarea v-model="message" placeholder="Write here what you wish to contact me for..."> </textarea>
+        <label>{{ $t('yourMessage') }}
+          <textarea v-model="message" :placeholder="$t('placeholderMessage')"> </textarea>
         </label>
       </div>
 
-      <button class="contact-container__form--send" type="submit">SEND</button>
+      <button class="contact-container__form--send" type="submit">{{ $t('send') }}</button>
     </form>
     <div class="contact-container__details">
       <div class="contact-container__details--item">
-        <h3 class="contact-container__details--item__title">Contact details</h3>
+        <h3 class="contact-container__details--item__title">{{ $t('contactDetails') }}</h3>
         <strong class="contact-container__details--item__content" @click="sendMail">
           <img src="../assets/pictures/email.png" width="20px" height="20px" />
           <span>hugotavard@gmail.com</span>
@@ -35,7 +35,7 @@
       </div>
 
       <div class="contact-container__details--item">
-        <h3 class="contact-container__details--item__title">Location</h3>
+        <h3 class="contact-container__details--item__title">{{ $t('location') }}</h3>
         <strong class="contact-container__details--item__content"
           @click="clickContact('https://www.google.fr/maps/place/Bordeaux')">
           Bordeaux, France
@@ -43,7 +43,7 @@
       </div>
 
       <div class="contact-container__details--item">
-        <h3 class="contact-container__details--item__title">Socials</h3>
+        <h3 class="contact-container__details--item__title">{{ $t('socials') }}</h3>
         <strong class="contact-container__details--item__content" @click="clickContact('https://github.com/htavard')">
           <img src="../assets/pictures/icons/github.png" width="20px" height="20px" /><span>Github</span>
         </strong>
@@ -57,7 +57,11 @@
 </template>
 
 <script setup lang='ts'>
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const name = ref<string>('')
 const email = ref<string>('')
 const message = ref<string>('')
@@ -79,14 +83,14 @@ function callMe() {
   window.location.href = `tel:+33786434102`
 }
 
-async function sendMailNoWindow() {
+function sendMailNoWindow() {
   if (!name.value || !email.value || !message.value) {
-    alert('Please fill out all fields.')
+    alert(t('sendFormVerif'))
     return
   }
 
   try {
-    await emailjs.send(
+    emailjs.send(
       'service_p132d9n',
       'template_wvsekkn',
       {
@@ -96,7 +100,7 @@ async function sendMailNoWindow() {
       },
       'hA0fg8iQMPaV9hKfs'
     )
-    alert('Email sent successfully!')
+    alert(t('sendFormAccept'))
     name.value = ''
     email.value = ''
     message.value = ''

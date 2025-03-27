@@ -1,18 +1,30 @@
 <template>
   <nav class="navbar" id="navbar">
     <h1 class="navbar__title" @click="emit('scroll', 'top-page')">Hugo Tavard</h1>
-    <ul class="navbar-links" v-if="!isMobile">
-      <li @click="emit('scroll', 'top-page')"><strong>About</strong></li>
-      <li @click="emit('scroll', 'projects')"><strong>Projects</strong></li>
-      <li @click="emit('scroll', 'skills')"><strong>Skills</strong></li>
-      <li @click="emit('scroll', 'contact')"><strong>Contact</strong></li>
-    </ul>
+
+    <div class="navbar-links-container">
+      <ul class="lang">
+        <li>
+          <button @click="switchLang('fr')">🇫🇷</button>
+        </li>
+        <li>
+          <button @click="switchLang('en')">🇬🇧</button>
+        </li>
+      </ul>
+      <ul class="navbar-links" v-if="!isMobile">
+        <li @click="emit('scroll', 'top-page')"><strong>{{ $t('about') }}</strong></li>
+        <li @click="emit('scroll', 'projects')"><strong>{{ $t('projects') }}</strong></li>
+        <li @click="emit('scroll', 'skills')"><strong>{{ $t('skills') }}</strong></li>
+        <li @click="emit('scroll', 'contact')"><strong>{{ $t('contact') }}</strong></li>
+      </ul>
+    </div>
+
 
     <ul class="navbar-side-links" v-if="isMobile" :class="{ visible: isActive }">
-      <li @click="handleSideClick('top-page')"><strong>About</strong></li>
-      <li @click="handleSideClick('projects')"><strong>Projects</strong></li>
-      <li @click="handleSideClick('skills')"><strong>Skills</strong></li>
-      <li @click="handleSideClick('contact')"><strong>Contact</strong></li>
+      <li @click="handleSideClick('top-page')"><strong>{{ $t('about') }}</strong></li>
+      <li @click="handleSideClick('projects')"><strong>{{ $t('projects') }}</strong></li>
+      <li @click="handleSideClick('skills')"><strong>{{ $t('skills') }}</strong></li>
+      <li @click="handleSideClick('contact')"><strong>{{ $t('contact') }}</strong></li>
       <li class="navbar-side-links__contact">
 
         <div class="navbar-side-links__contact--socials">
@@ -48,9 +60,9 @@
         </div>
 
       </li>
-      <li >
-        <a href="../assets/files/ht_dev_resume_en.pdf" download class="navbar-side-links__download"><svg width="50px" height="50px"
-            viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#F9E0BB"
+      <li>
+        <a href="../assets/files/ht_dev_resume_en.pdf" download class="navbar-side-links__download"><svg width="50px"
+            height="50px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#F9E0BB"
             transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
@@ -61,7 +73,7 @@
                 stroke="#F9E0BB" stroke-width="1.056" stroke-linecap="round" stroke-linejoin="round"></path>
             </g>
           </svg>
-          <strong>resume</strong>
+          <strong>{{ $t('resume') }}</strong>
         </a>
       </li>
     </ul>
@@ -81,6 +93,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n()
+
+
 const emit = defineEmits(
   ['scroll', 'blur']
 )
@@ -106,6 +122,11 @@ onMounted(() => {
     navbar.style.borderBottom = border
   })
 })
+
+function switchLang(lang) {
+  locale.value = lang
+  localStorage.setItem('user-lang', lang)
+}
 
 function handleSideClick(location: string) {
   isActive.value = false
@@ -149,12 +170,20 @@ watch(() => isActive.value,
     flex: 1;
   }
 
-  .navbar-links {
+  .navbar-links-container {
     display: flex;
-    gap: 5vw;
+    gap: 2vw;
     justify-content: flex-end;
     list-style: none;
-    flex: 1;
+    flex: 3;
+    align-items: center;
+
+    .navbar-links {
+      list-style: none;
+      display: flex;
+      gap: 5vw;
+      padding-left: 0;
+    }
 
     li {
       cursor: pointer;
@@ -164,10 +193,10 @@ watch(() => isActive.value,
 
 .navbar-side-links {
   --mask:
-    radial-gradient(34.8px at 49.2px 50%,#000 99%,#0000 101%) 0 calc(50% - 48px)/100% 96px,
-    radial-gradient(34.8px at -25.2px 50%,#0000 99%,#000 101%) 24px 50%/100% 96px repeat-y;
+    radial-gradient(34.8px at 49.2px 50%, #000 99%, #0000 101%) 0 calc(50% - 48px)/100% 96px,
+    radial-gradient(34.8px at -25.2px 50%, #0000 99%, #000 101%) 24px 50%/100% 96px repeat-y;
   -webkit-mask: var(--mask);
-          mask: var(--mask);
+  mask: var(--mask);
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -242,10 +271,32 @@ watch(() => isActive.value,
   right: 0;
 }
 
+.lang {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar{
+    &__title {
+      font-size: 1.5rem;
+    }
+  }
+  
+}
+
 
 @media screen and (max-width: 768px) {
   .navbar {
     padding-right: 5rem;
+
+    .navbar-links-container {
+      flex: 1;
+      .lang {
+        padding-right: 2vw;
+      }
+    }
 
     &__title {
       font-size: 1.5rem;
@@ -253,13 +304,30 @@ watch(() => isActive.value,
   }
 }
 
-@media screen and (max-width: 650px) 
-{
+@media screen and (max-width: 650px) {
+  .navbar{
+    &__title {
+      flex: 2;
+    }
+  }
   .navbar-side-links {
     padding-left: 4rem;
     width: calc(30% + 5rem);
     right: -65%;
   }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar{
+    &__title {
+      font-size: 1.25rem;
+    }
+  }
+
+  .navbar-side-links{
+    right: -75%;
+  }
+  
 }
 
 .hamb {

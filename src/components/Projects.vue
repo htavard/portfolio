@@ -8,8 +8,8 @@
       <div class="project__item--img__titlebox" id="titleBox"
         :style="project.orientation === 'left' ? { left: '65%' } : { right: '65%' }" @click="openLink(project)"
         @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)">
-        <strong>{{ project.name }}</strong>
-        <p>{{ project.description }}</p>
+        <strong>{{ $t(`projectNameList.${project.id}`) }}</strong>
+        <p>{{ $t(`projectDescList.${project.id}`) }}</p>
       </div>
       <div class="tag-container">
         <ul class="project-tags"

@@ -1,5 +1,6 @@
 export const projectData: Project[] = [
   {
+    id: "ValueMyCar",
     name: "ValueMyCar.fr",
     description: `Connect professionals and automobilists for car maintenance`,
     tags: [{name: 'typescript', icon: 'src/assets/pictures/icons/typescript.png'},{name: 'vue', icon:'src/assets/pictures/icons/vue.png'},{name: 'nuxt', icon: 'src/assets/pictures/icons/nuxt.png'}, {name: "accessibility", icon:'src/assets/pictures/icons/accessibility.png'}],
@@ -9,6 +10,7 @@ export const projectData: Project[] = [
     orientation: 'left'
   },
   {
+    id: "LaytonStories",
     name: "Professor Layton Stories",
     description: `Enter Professor Layton's universe !`,
     tags: [{name: 'C#', icon: 'src/assets/pictures/icons/csharp.png'}, {name: 'API REST'}, {name: 'ASP.NET', icon: 'src/assets/pictures/icons/netcore.png'}, {name: 'SQL'}, {name: 'css', icon: 'src/assets/pictures/icons/css.png'}],
@@ -18,6 +20,7 @@ export const projectData: Project[] = [
     orientation: 'right'
   },
   {
+    id: "ColonyGame",
     name: "Colony management game",
     description: "Rebuild a civilization from scratch",
     tags: [{name: 'C#', icon: 'src/assets/pictures/icons/csharp.png'}, {name: "console"}, {name: "game"}],
@@ -27,6 +30,7 @@ export const projectData: Project[] = [
     orientation: 'left'
   },
   {
+    id: "TreasureHunt",
     name: "Treasure hunt game",
     description: "Mines and treasures. Which will you encounter first ?",
     tags: [{name: 'C#', icon: 'src/assets/pictures/icons/csharp.png'}, {name: "console"}, {name: "game"}],

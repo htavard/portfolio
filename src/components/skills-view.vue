@@ -1,6 +1,6 @@
 <template>
   <div class="list-container" id="containerList">
-    <h3 class="category">{{ category }}</h3>
+    <h3 class="category">{{ getLocalizedCategory(category) }}</h3>
     <div :class="isSmallFormat ? `skills-small` : `skills`" id="skillList" v-if="skills">
       <div :class="isSmallFormat ? `skills-small__item` : `skills__item`" v-for="(skill, index) in skills" :key="skill.name"
         :id="`skillItem-${index}-${category}`" @mouseenter="removeMarginOnHover(index)"
@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import { skillList } from '../data/skills';
 import { ESkillCategory } from '../types/enums';
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
   category: { type: String as PropType<ESkillCategory>, default: null },
@@ -34,6 +35,18 @@ onMounted(() => {
   )
 })
 
+function useLocalizedCategories() {
+  const { t } = useI18n()
+  
+  const getLocalizedCategory = (category: ESkillCategory) => {
+    return t(`categories.${category}`)
+  }
+  
+  return {
+    getLocalizedCategory
+  }
+}
+const {getLocalizedCategory} = useLocalizedCategories()
 
 function initializeWidth() {
   itemWidth.value = []

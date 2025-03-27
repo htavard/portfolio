@@ -4,6 +4,7 @@ export {}
 
 declare global {
   interface Project {
+    id: string
     name: string
     description: string
     tags: SkillTag[]

@@ -1,0 +1,41 @@
+{ "about" : "About",
+  "contact" : "Contact",
+  "resume" : "Resume",
+  "mainProjects" : "Main projects",
+  "contactForm" : "Let's get in touch",
+  "headerTitle1" : "Full-Stack Developer ",
+  "headerTitle2" : " Vue Enthusiast",
+  "headerPresentation" : "Hello! I'm Hugo Tavard, a cognitive engineer specializing in web development based in France. Cognitive sciences are for me a mean to understand users and create intuitive, visually appealing websites for them. I thrive on learning new skills while continuously improving the ones I already have.",
+  "projects" : "Projects",
+  "skills" : "Skills",
+  "contactMe" : "Contact me",
+  "yourName" : "What's your name ?",
+  "yourEmail" : "What's your email ?",
+  "yourMessage" : "Your message",
+  "placeholderName" : "John Doe",
+  "placeholderEmail" : "johndoe@gmail.com",
+  "placeholderMessage" : "Write here what you wish to contact me for...",
+  "send": "SEND",
+  "contactDetails" : "Contact details",
+  "location" : "Location",
+  "socials" : "Socials",
+  "sendFormVerif":"Please fill out all fields",
+  "sendFormAccept": "Email sent successfully!",
+  "projectDescList": {
+    "ValueMyCar": "Connect professionals and automobilists for car maintenance",
+    "LaytonStories": "Enter Professor Layton's universe !",
+    "ColonyGame": "Rebuild a civilization from scratch",
+    "TreasureHunt" : "Mines and treasures. Which will you encounter first ?"
+  },
+  "projectNameList": {
+    "ValueMyCar": "ValueMyCar.fr",
+    "LaytonStories": "Professor Layton Stories",
+    "ColonyGame": "Colony management game",
+    "TreasureHunt" : "Treasure hunt game"
+  },
+  "categories": {
+    "technologies": "Technologies",
+    "design": "Design",
+    "tools": "Tools"
+  }
+}

@@ -3,17 +3,17 @@
     <ul class="nav-buttons__list">
       <li class="nav-buttons__list--item">
         <button class="nav-btn" @click="emit('scroll', 'projects')">
-          Projects
+          {{ $t('projects') }}
         </button>
       </li>
       <li class="nav-buttons__list--item">
         <button class="nav-btn" @click="emit('scroll', 'skills')">
-          Skills
+          {{ $t('skills') }}
         </button>
       </li>
       <li class="nav-buttons__list--item">
         <button class="nav-btn" @click="emit('scroll', 'contact')">
-          Contact me
+          {{ $t('contactMe') }}
         </button>
       </li>
     </ul>

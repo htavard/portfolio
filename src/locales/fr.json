@@ -1,0 +1,41 @@
+{ "about" : "À propos",
+  "contact" : "Contact",
+  "resume" : "CV",
+  "mainProjects" : "Principaux projets",
+  "contactForm" : "Une suite ensemble ?",
+  "headerTitle1" : "Développeur Full-Stack ",
+  "headerTitle2" : " Spécialiste Vue",
+  "headerPresentation" : "Bonjour ! Je suis Hugo, ingénieur diplômé de l'ENSC (École Nationale Supérieure de Cognitique) et je suis spécialisé dans le développement web. Les sciences cognitives sont pour moi un moyen de comprendre les utilisateurs et de les intégrer au maximum dans le processus de développement afin de leur proposer une réalisation pratique et esthétique. J'aime apprendre de nouvelles compétences tout en progressant dans celles que je possède déjà",
+  "projects" : "Projets",
+  "skills" : "Compétences",
+  "contactMe" : "Contact",
+  "yourName" : "Quel est votre nom ?",
+  "yourEmail" : "Quel est votre email ?",
+  "yourMessage" : "Votre message",
+  "placeholderName" : "Alice Durand",
+  "placeholderEmail" : "alice@exemple.fr",
+  "placeholderMessage" : "Écrivez votre message ici...",
+  "send": "ENVOYER",
+  "contactDetails" : "Contactez-moi",
+  "location" : "Localisation",
+  "socials" : "Réseaux",
+  "sendFormVerif":"Remplissez tous les champs s'il vous plaît",
+  "sendFormAccept": "Email envoyé !",
+  "projectDescList": {
+    "ValueMyCar": "Facilitez l'entretien de votre auto avec des professionnels partout en France",
+    "LaytonStories": "Rentrez dans l'univers du Professeur Layton !",
+    "ColonyGame": "Reconstruisez une civilisation à partir de zéro",
+    "TreasureHunt" : "Mines et trésors. Lequel rencontrerez-vous en premier ?"
+  },
+  "projectNameList": {
+    "ValueMyCar": "ValueMyCar.fr",
+    "LaytonStories": "Professor Layton Stories",
+    "ColonyGame": "Gestion de colonie",
+    "TreasureHunt" : "Chasse au trésor"
+  },
+  "categories": {
+    "technologies": "Technologies",
+    "design": "Design",
+    "tools": "Outils"
+  }
+}

@@ -8,12 +8,12 @@
 
 
     <section class="container__project">
-      <h2 id="projects">Main projects</h2>
+      <h2 id="projects">{{ $t('mainProjects') }}</h2>
       <Projects :projectList="projectData" />
     </section>
 
     <section class="container__skills">
-      <h2 id="skills">Skills</h2>
+      <h2 id="skills">{{ $t('skills') }}</h2>
       <div class="skill-list" id="skillsGroupList">
         <skills-view :category="ESkillCategory.TECHNOLOGY" :container-width="sectionWidth" :is-small-format="sectionWidth < 885 "/>
         <div class="skill-list__other">
@@ -24,7 +24,7 @@
     </section>
 
     <section class="container__contact">
-      <h2 id="contact">Let's get in touch</h2>
+      <h2 id="contact">{{ $t('contactForm') }}</h2>
       <contact ref="form" />
     </section>
 
