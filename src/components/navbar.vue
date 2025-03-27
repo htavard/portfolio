@@ -61,7 +61,7 @@
 
       </li>
       <li>
-        <a :href="`../assets/files/${$t('resumeLang')}`" download class="navbar-side-links__download"><svg width="50px"
+        <a :href="`${baseUrl}files/${$t('resumeLang')}`" download class="navbar-side-links__download"><svg width="50px"
             height="50px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#F9E0BB"
             transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -96,6 +96,9 @@
 import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 
+const baseUrl = process.env.NODE_ENV === 'production'
+  ? '/portfolio/' 
+  : '/'
 
 const emit = defineEmits(
   ['scroll', 'blur']

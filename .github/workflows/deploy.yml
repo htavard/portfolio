@@ -26,4 +26,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          keep_files: true  # Preserves .nojekyll and CNAME
+          destination_dir: ./portfolio # Critical for base path
+          keep_files: false
