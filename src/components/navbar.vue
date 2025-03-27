@@ -96,7 +96,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { onClickOutside } from '@vueuse/core'
-import { handleError } from 'vue'
 const { locale } = useI18n()
 
 const baseUrl = process.env.NODE_ENV === 'production'
