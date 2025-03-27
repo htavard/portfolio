@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Critical for first-time deployment
+      contents: write 
     steps:
       - uses: actions/checkout@v4
       
