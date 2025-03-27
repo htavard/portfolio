@@ -29,6 +29,7 @@
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.17.28",
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/devtools-api": "^7.7.2",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/test-utils": "^2.4.6",
@@ -43,7 +44,6 @@
     "typescript": "latest",
     "unplugin-auto-import": "^19.1.2",
     "vite": "latest",
-    "vite-plugin-vue-devtools": "^7.7.2",
     "vitest": "^1.6.1",
     "vue-tsc": "latest"
   }

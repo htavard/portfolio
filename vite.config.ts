@@ -2,17 +2,22 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
 import AutoImport from 'unplugin-auto-import/vite'
 import { writeFileSync } from 'node:fs'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base:'/portfolio/',
+  base: process.env.NODE_ENV === 'production' ? '/portfolio/' : '/',
+  assetsInclude: ['**/*.html'],
+  optimizeDeps: {
+    exclude: ['@vue/devtools-kit'], 
+  },
+  define: {
+    __VUE_PROD_DEVTOOLS__: false, 
+  },
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler', // or "modern"
+        api: 'modern-compiler',
       }
     }
   },
@@ -24,7 +29,6 @@ export default defineConfig({
         }
       }
     }),
-    vueDevTools(),
     AutoImport({
       imports: [
         'vue',
@@ -33,19 +37,8 @@ export default defineConfig({
           '@vueuse/core': ['useMouse', 'useFetch'],
         }
       ],
-      dts: 'src/auto-imports.d.ts', // Generates TypeScript declarations
+      dts: 'src/auto-imports.d.ts', 
     }),
-    {
-      name: 'rewrite-all-to-index',
-      configureServer(server) {
-        server.middlewares.use((req, _, next) => {
-          if (!req.url?.startsWith('/@vite') && !req.url?.endsWith('.js')) {
-            req.url = '/index.html'
-          }
-          next()
-        })
-      }
-    },
     {
       name: 'github-pages-nojekyll',
       apply: 'build',
