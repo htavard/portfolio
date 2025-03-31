@@ -293,6 +293,22 @@ watch(() => props.containerWidth,
   }
 }
 
-// .skills:hover {
-//   flex-wrap: nowrap;
-// }</style>
+@media screen and  (max-width: 550px) {
+  .skills-small {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .list-container {
+    padding: 1rem 0.5rem;
+  }
+  .skills-small {
+    gap: 5px;
+  }
+  .skills__item--icon__img{
+    width: 40px;
+    height: 40px;
+  }
+}
+</style>
