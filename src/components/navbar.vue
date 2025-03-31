@@ -325,6 +325,7 @@ watch(() => isActive.value,
 
 @media screen and (max-width: 650px) {
   .navbar {
+  padding-right: 3rem;
     &__title {
       flex: 2;
     }
@@ -339,6 +340,7 @@ watch(() => isActive.value,
 
 @media screen and (max-width: 400px) {
   .navbar {
+    padding-right: 1.5rem;
     &__title {
       font-size: 1.25rem;
     }

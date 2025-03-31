@@ -5,13 +5,13 @@
         @click="openLink(project)" @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)">
       <i class="fi fi-bs-arrow-up-right-from-square goto-icon" width="60px" :id="`goto-${index}`"
         @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)" @click="openLink(project)"></i>
-      <div class="project__item--img__titlebox" id="titleBox"
+      <div class="project__item--img__titlebox" :id="`titleBox-${index}`"
         :style="project.orientation === 'left' ? { left: '65%' } : { right: '65%' }" @click="openLink(project)"
         @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave(index)">
         <strong>{{ $t(`projectNameList.${project.id}`) }}</strong>
         <p>{{ $t(`projectDescList.${project.id}`) }}</p>
       </div>
-      <div class="tag-container">
+      <div class="tag-container" :id="`tag-container-${index}`">
         <ul class="project-tags"
           :class="{ 'animation-right': project.orientation === 'right', 'animation-left': project.orientation === 'left' }">
           <li class="project-tags__item" v-for="tag in project.tags" :key="tag.name">
@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang='ts'>
-defineProps({
+const props = defineProps({
   projectList: { type: Object as PropType<Project[]>, default: null }
 })
 
@@ -54,16 +54,58 @@ function openLink(project: Project) {
 function handleMouseEnter(index: number) {
   const element1 = document.getElementById(`goto-${index}`)
   const element2 = document.getElementById(`project-${index}`)
-  if(element1) element1.style.opacity = '1'
-  if(element2) element2.style.filter = 'blur(5px) grayscale(50%)'
+  if (element1) element1.style.opacity = '1'
+  if (element2) element2.style.filter = 'blur(5px) grayscale(50%)'
 }
 
 function handleMouseLeave(index: number) {
   const element1 = document.getElementById(`goto-${index}`)
   const element2 = document.getElementById(`project-${index}`)
-  if(element1) element1.style.opacity = '0'
-  if(element2) element2.style.filter = 'none'
+  if (element1) element1.style.opacity = '0'
+  if (element2) element2.style.filter = 'none'
 }
+
+function positionTagContainers() {
+  if (!props.projectList) return
+
+  props.projectList.forEach((_, index) => {
+    const titleBox = document.getElementById(`titleBox-${index}`)
+    const tagContainer = document.getElementById(`tag-container-${index}`)
+    const projectContainer = document.getElementById(`project-${index}`)
+
+    if (titleBox && tagContainer && projectContainer) {
+      const titleBoxHeight = titleBox.offsetHeight
+      const tagContainerHeight = tagContainer.offsetHeight
+      const imgHeight = projectContainer.offsetHeight
+      const calculatedBottom = window.screen.width <= 1000 ? Math.floor(titleBoxHeight - 0.15 * imgHeight + tagContainerHeight) : Math.floor(titleBoxHeight - (0.15 * imgHeight) + (tagContainerHeight - 50) / 2)
+      tagContainer.style.bottom = `-${calculatedBottom}px`
+
+    }
+
+  })
+}
+
+onMounted(() => {
+
+  setTimeout(() => {
+
+
+    positionTagContainers()
+
+  }, 100)
+
+  window.addEventListener('resize', positionTagContainers)
+})
+
+watch(() => props.projectList, () => {
+
+  setTimeout(() => {
+
+
+    positionTagContainers()
+
+  }, 100)
+}, { deep: true })
 
 </script>
 
@@ -81,6 +123,7 @@ function handleMouseLeave(index: number) {
     position: relative;
     cursor: pointer;
 
+
     &--img {
       object-fit: cover;
       width: 100%;
@@ -95,7 +138,7 @@ function handleMouseLeave(index: number) {
         background-color: #f7b267;
         border-radius: 15px;
         top: 85%;
-        height: 30%;
+        min-height: 30%;
         width: 50%;
         z-index: 100;
         padding: 10px 20px;
@@ -104,11 +147,28 @@ function handleMouseLeave(index: number) {
         align-items: center;
         justify-content: center;
         font-size: clamp(0.8rem, 1.5vw, 1rem);
+        overflow: hidden;
 
 
         strong {
           text-wrap: wrap;
           font-size: clamp(0.8rem, 1.5vw, 1rem);
+          display: -webkit-box;
+          line-clamp: 2;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          margin-bottom: 5px;
+        }
+
+        p {
+          display: -webkit-box;
+          line-clamp: 3;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          margin: 0;
+          font-size: clamp(0.7rem, 1.3vw, 0.9rem);
         }
       }
     }
@@ -140,7 +200,7 @@ function handleMouseLeave(index: number) {
   display: flex;
   overflow: hidden;
   cursor: default;
-  bottom: calc(-15% - 0.95rem);
+  // bottom: calc(-15% - 0.95rem);
   width: 100%;
 
   .project-tags {
@@ -209,14 +269,15 @@ function handleMouseLeave(index: number) {
           top: 85%;
           left: 5% !important;
           width: 90%;
-          height: 25%;
+          min-height: 25%; // Use min-height here too
+          max-height: 40%; // Add max-height to prevent excessive growth on mobile
         }
       }
     }
   }
 
   .tag-container {
-    bottom: calc(-20% - 1.95rem);
+    // bottom: calc(-20% - 1.95rem);
 
     .project-tags {
       height: 40px;
@@ -232,7 +293,7 @@ function handleMouseLeave(index: number) {
     }
 
     .tag-container {
-      bottom: calc(-20% - 1rem);
+      // bottom: calc(-20% - 1rem);
 
       .project-tags {
         height: 30px;
