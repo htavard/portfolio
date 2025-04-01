@@ -247,7 +247,7 @@ watch(() => props.containerWidth,
 
   &__text {
     margin: 0 25px;
-    color: var(--text);
+    color: var(--stylized-text);
     ;
     font-weight: bold;
     font-size: 1.25rem;

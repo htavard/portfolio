@@ -29,15 +29,15 @@ a {
   }
 }
 
-// :root {
+:root {
 
-//   --text: #343131;
-//   --background: #F9E0BB;
-//   --stylized-text : #4a2c2a;
-//   --tag-color: #ff7f51;
-//   --tag-text: #720026;
-//   --titlebox: #f7b267;
-// }
+  --text: #343131;
+  --background: #F9E0BB;
+  --stylized-text : #4a2c2a;
+  --tag-color: #ff7f51;
+  --tag-text: #720026;
+  --titlebox: #f7b267;
+}
 
 // :root {
 
@@ -49,12 +49,30 @@ a {
 //   --titlebox: #9cc5a1;
 // }
 
-:root {
+// :root {
 
+//   --text: #E6EDF3;
+//   --background: #121A24  ;
+//   --stylized-text : #E6EDF3  ;
+//   --tag-color: #1F3937   ;
+//   --tag-text: #B0C4DE  ;
+//   --titlebox: #203A47   ;
+// }
+
+.winter-theme {
   --text: #E6EDF3;
   --background: #121A24  ;
   --stylized-text : #E6EDF3  ;
   --tag-color: #1F3937   ;
   --tag-text: #B0C4DE  ;
   --titlebox: #203A47   ;
+}
+
+.fall-theme {
+  --text: #343131;
+  --background: #F9E0BB;
+  --stylized-text : #4a2c2a;
+  --tag-color: #ff7f51;
+  --tag-text: #720026;
+  --titlebox: #f7b267;
 }
