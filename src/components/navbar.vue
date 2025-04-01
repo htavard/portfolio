@@ -29,26 +29,26 @@
 
           <div class="navbar-side-links__contact--socials">
             <svg @click="clickContact('https://www.linkedin.com/in/hugo-tavard-developper/')" title="Linkedin"
-              width="50px" height="50px" viewBox="0 0 24 24" fill="#F9E0BB" xmlns="http://www.w3.org/2000/svg">
+              width="50px" height="50px" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
                 <path
                   d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z"
-                  fill="#F9E0BB"></path>
+                  ></path>
                 <path
                   d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z"
-                  fill="#F9E0BB"></path>
+                  ></path>
                 <path
                   d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11 16 13V18.0004C16 18.5527 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V12C19 10 17.5 9 15.5 9C13.5 9 13 10.5 13 10.5V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z"
-                  fill="#F9E0BB"></path>
+                  ></path>
                 <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z"
-                  fill="#F9E0BB"></path>
+                  ></path>
               </g>
             </svg>
             <svg @click="clickContact('https://github.com/htavard')" title="Github" width="50px" height="50px"
-              viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+              viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
@@ -63,14 +63,14 @@
         <li>
           <a :href="`${baseUrl}files/${$t('resumeLang')}`" download class="navbar-side-links__download"><svg
               width="50px" height="50px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg"
-              stroke="#F9E0BB" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
+              transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" 
                 stroke-width="0.048"></g>
               <g id="SVGRepo_iconCarrier">
                 <path
                   d="M17 17H17.01M17.4 14H18C18.9319 14 19.3978 14 19.7654 14.1522C20.2554 14.3552 20.6448 14.7446 20.8478 15.2346C21 15.6022 21 16.0681 21 17C21 17.9319 21 18.3978 20.8478 18.7654C20.6448 19.2554 20.2554 19.6448 19.7654 19.8478C19.3978 20 18.9319 20 18 20H6C5.06812 20 4.60218 20 4.23463 19.8478C3.74458 19.6448 3.35523 19.2554 3.15224 18.7654C3 18.3978 3 17.9319 3 17C3 16.0681 3 15.6022 3.15224 15.2346C3.35523 14.7446 3.74458 14.3552 4.23463 14.1522C4.60218 14 5.06812 14 6 14H6.6M12 15V4M12 15L9 12M12 15L15 12"
-                  stroke="#F9E0BB" stroke-width="1.056" stroke-linecap="round" stroke-linejoin="round"></path>
+                  :stroke="'var(--background)'" stroke-width="1.056" stroke-linecap="round" stroke-linejoin="round"></path>
               </g>
             </svg>
             <strong>{{ $t('resume') }}</strong>
@@ -83,11 +83,11 @@
         viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" @click="handleToggleSidebar">
         <path class="line top"
           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"
-          stroke="#000000" stroke-width="2" stroke-linecap="round" />
-        <path class="line middle" d="m 30,50 h 40" stroke="#000000" stroke-width="2" stroke-linecap="round" />
+          stroke-width="2" stroke-linecap="round" />
+        <path class="line middle" d="m 30,50 h 40"  stroke-width="2" stroke-linecap="round" />
         <path class="line bottom"
           d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"
-          stroke="#000000" stroke-width="2" stroke-linecap="round" />
+          stroke-width="2" stroke-linecap="round" />
       </svg>
     </div>
   </nav>
@@ -171,8 +171,8 @@ watch(() => isActive.value,
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.2s ease;
-  background-color: #4A2C2A;
-  color: #F9E0BB;
+  background-color: var(--stylized-text);
+  color: var(--background);
   z-index: 1000;
   top: 0;
   padding: 0 5vw;
@@ -214,8 +214,8 @@ watch(() => isActive.value,
   position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: #4A2C2A;
-  color: #F9E0BB;
+  background-color: var(--stylized-text);
+  color: var(--background);
   height: calc(102vh - var(--navbar-height));
   gap: 10vh;
   top: var(--navbar-height);
@@ -229,7 +229,7 @@ watch(() => isActive.value,
   padding-left: 4rem;
   margin-top: 0;
   transform: translateY(-3px);
-  border-left: 3px solid rgba(74, 44, 42, 0.7);
+  border-left: 3px solid var(--stylized-text);
 
   &__contact {
     display: flex;
@@ -246,8 +246,8 @@ watch(() => isActive.value,
 
         path {
           stroke-width: 0.1;
-          stroke: #F9E0BB;
-          fill: #F9E0BB;
+          stroke: var(--background);
+          fill: var(--background);
         }
       }
     }
@@ -265,7 +265,7 @@ watch(() => isActive.value,
     display: flex;
     align-items: center;
     gap: 1rem;
-    border: 2px solid #F9E0BB;
+    border: 2px solid var(--background);
     border-radius: 10px;
     padding: 0 1rem;
     width: fit-content;
@@ -278,10 +278,10 @@ watch(() => isActive.value,
 }
 
 .navbar-side-links li a {
-  color: #F9E0BB;
+  color: var(--background);
 
   &:visited {
-    color: #F9E0BB !important;
+    color: var(--background) !important;
   }
 }
 
@@ -357,7 +357,7 @@ watch(() => isActive.value,
   transition: transform 400ms;
   user-select: none;
   z-index: 1002;
-  color: #F9E0BB;
+  color: var(--background);
 }
 
 .hamb-rotate.active {
@@ -367,7 +367,7 @@ watch(() => isActive.value,
 .line {
   fill: none;
   transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-  stroke: #F9E0BB;
+  stroke: var(--background);
   stroke-width: 5;
   stroke-linecap: round;
 }

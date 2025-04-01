@@ -167,7 +167,7 @@ watch(() => props.containerWidth,
 
 <style scoped lang="scss">
 .list-container {
-  border: #4A2C2A 3px solid;
+  border: var(--stylized-text) 3px solid;
   border-radius: 50px;
   padding: 1rem;
   width: fit-content;
@@ -204,7 +204,7 @@ watch(() => props.containerWidth,
       position: absolute;
       inset: 0;
       border-radius: 60px;
-      background: #ff7f51;
+      background: var(--tag-color);
       opacity: 0;
       transition: 0.3s;
     }
@@ -216,7 +216,7 @@ watch(() => props.containerWidth,
       width: 100%;
       height: 100%;
       border-radius: 60px;
-      background: #ff7f51;
+      background: var(--tag-color);
       transition: 0.3s;
       filter: blur(15px);
       z-index: -1;
@@ -257,7 +257,7 @@ watch(() => props.containerWidth,
 
     &--name {
       position: absolute;
-      color: #720026;
+      color: var(--tag-text);
       font-size: 1.1em;
       letter-spacing: 0.1em;
       text-transform: uppercase;

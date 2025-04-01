@@ -146,11 +146,11 @@ categorySkills()
 }
 
 .scroll-to-top {
-  color: #F9E0BB;
+  color: var(--background);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #4A2C2A;
+  background-color: var(--stylized-text);
   border-radius: 50%;
   border: none;
   position: fixed;

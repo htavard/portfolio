@@ -135,7 +135,7 @@ watch(() => props.projectList, () => {
         position: absolute;
         display: flex;
         flex-direction: column;
-        background-color: #f7b267;
+        background-color: var(--titlebox);
         border-radius: 15px;
         top: 85%;
         min-height: 30%;
@@ -192,7 +192,7 @@ watch(() => props.projectList, () => {
   transform: translate(-50%, -50%);
   font-size: 3rem;
   transition: opacity 0.3s ease-in;
-  color: #f7b267;
+  color: var(--titlebox);
 }
 
 .tag-container {
@@ -225,7 +225,7 @@ watch(() => props.projectList, () => {
       align-items: center;
       gap: 1rem;
       justify-content: center;
-      background-color: #ff7f51;
+      background-color: var(--tag-color);
       width: fit-content;
       padding: 10px 20px;
       border-radius: 60px;

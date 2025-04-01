@@ -24,7 +24,8 @@
         <path fill="currentColor" d="M12,7a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0V8A1,1,0,0,0,12,7Z" />
       </svg>
 
-      <svg xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24" width="30" height="40" class="down-arrows">
+      <svg xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24" width="30" height="40"
+        class="down-arrows">
         <g>
           <path fill="currentColor"
             d="M.305,12.293a1,1,0,0,1,1.414,0l8.172,8.171a3,3,0,0,0,4.242,0l8.172-8.171a1,1,0,0,1,1.414,1.414l-8.172,8.171a5,5,0,0,1-7.07,0L.305,13.707a1,1,0,0,1,0-1.414Z" />
@@ -75,11 +76,11 @@ const emit = defineEmits(
       .nav-btn {
         width: 100%;
         height: 100%;
-        background-color: #F9E0BB;
-        border: 3px solid #4A2C2A;
+        background-color: var(--background);
+        border: 3px solid var(--stylized-text);
         border-radius: 30px;
-        box-shadow: #4A2C2A 5px 5px 0 0;
-        color: #4A2C2A;
+        box-shadow: var(--stylized-text) 5px 5px 0 0;
+        color: var(--stylized-text);
         cursor: pointer;
         display: inline-block;
         font-weight: 600;
@@ -90,7 +91,7 @@ const emit = defineEmits(
       }
 
       .nav-btn:hover {
-        box-shadow: #4A2C2A 2px 2px 0 0;
+        box-shadow: var(--stylized-text) 2px 2px 0 0;
         transform: translate(2px, 2px);
       }
     }
@@ -103,7 +104,7 @@ const emit = defineEmits(
   gap: 0.25rem;
   align-items: center;
   justify-content: flex-end;
-  color: #4A2C2A;
+  color: var(--stylized-text);
   cursor: pointer;
 
   .down-arrows {
@@ -125,15 +126,14 @@ const emit = defineEmits(
   }
 }
 
-@media screen and (max-width: 1150px) 
-{
-  .nav-buttons{
+@media screen and (max-width: 1150px) {
+  .nav-buttons {
     width: 60vw;
   }
 }
-@media screen and (max-width: 950px) 
-{
-  .nav-buttons{
+
+@media screen and (max-width: 950px) {
+  .nav-buttons {
     width: 74vw;
   }
 }

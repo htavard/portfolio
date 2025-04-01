@@ -160,7 +160,7 @@ watch(() => props.containerWidth,
   justify-content: center;
   padding: 10px 20px;
   background-color: transparent;
-  border: 2px solid #343131;
+  border: 2px solid var(--text);
   border-radius: 5px;
   cursor: pointer;
   overflow: hidden;
@@ -185,7 +185,7 @@ watch(() => props.containerWidth,
 
   &__text {
     margin: 0 25px;
-    color: #343131;
+    color: var(--text);
     ;
     font-weight: bold;
     font-size: 1.25rem;

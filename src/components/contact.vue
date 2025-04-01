@@ -137,15 +137,15 @@ function clickContact(link: string) {
       font-size: 1.4rem;
       border: none;
       border-radius: 5vw;
-      background-color: #4A2C2A;
-      color: #F9E0BB;
+      background-color: var(--stylized-text);
+      color: var(--background);
       padding: 0.5rem;
-      border: 2px solid #4A2C2A;
+      border: 2px solid var(--stylized-text);
       transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
 
       &:hover {
-        background-color: #F9E0BB;
-        color: #4A2C2A;
+        background-color: var(--background);
+        color: var(--stylized-text);
         transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
       }
     }
@@ -167,9 +167,9 @@ function clickContact(link: string) {
       textarea {
         border: none;
         background-color: transparent;
-        border-bottom: 2px solid #4A2C2A;
+        border-bottom: 2px solid var(--stylized-text);
         font-size: 1rem;
-        color: #4A2C2A;
+        color: var(--stylized-text);
       }
 
       textarea {
@@ -234,7 +234,7 @@ function clickContact(link: string) {
 
         input, textarea {
           font-size: 13px;
-          border-bottom: 2px solid #4A2C2A;
+          border-bottom: 2px solid var(--stylized-text);
         }
       }
 
