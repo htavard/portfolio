@@ -10,11 +10,6 @@
             {{ $t('headerPresentation') }}
           </p>
           <div class="header__content--presentation__contact">
-            <!-- <img src="../assets/pictures/icons/linkedin.png" alt="logo Linkedin"
-              @click="clickContact('https://www.linkedin.com/in/hugo-tavard-developper/')" title="Linkedin">
-            <img src="../assets/pictures/icons/github.png" alt="logo Github"
-              @click="clickContact('https://github.com/htavard')" title="Github"> -->
-
             <svg @click="clickContact('https://www.linkedin.com/in/hugo-tavard-developper/')" title="Linkedin"
               width="50px" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -86,29 +81,32 @@
       </div>
     </div>
 
-    <div class="header__content--profile-wrapper">
-      <img src="../assets/pictures/fall/frameLeaf.png" alt="Décoration feuille automne"
+    <div class="header__content--profile-wrapper" v-if="themeStore.frameUrl">
+      <img :src="baseUrl + themeStore.frameUrl" alt="Décoration feuille automne"
         class="header__content--profile-wrapper__leaf bottom-left">
-      <img src="../assets/pictures/fall/frameLeaf.png" alt="Décoration feuille automne"
+      <img :src="baseUrl + themeStore.frameUrl" alt="Décoration feuille automne"
         class="header__content--profile-wrapper__leaf upper-right">
       <div class="header__content--profile-wrapper__image">
         <img src="../assets/pictures/myself.jpeg" alt="Photo d'Hugo Tavard"
           class="header__content--profile-wrapper__image--img">
       </div>
     </div>
-
-
   </header>
 </template>
 
 <script setup lang="ts">
+import { useThemeStore } from '@/utils/themeStore'
+
+const themeStore = useThemeStore()
+
 const props = defineProps({
   containerWidth: { type: Number, default: 0 }
 })
 
+
 const baseUrl = process.env.NODE_ENV === 'production'
   ? '/portfolio/'
-  : '/'
+  : 'src/'
 
 const headerWidth = ref<number>(0)
 
@@ -120,6 +118,7 @@ watch(() => props.containerWidth,
   (newValue) => {
     headerWidth.value = newValue
   }, { immediate: true })
+
 </script>
 
 <style scoped lang="scss">
@@ -223,7 +222,6 @@ watch(() => props.containerWidth,
   svg {
     width: 30px;
     height: 30px;
-    // stroke: var(--stylized-text);
     fill: var(--stylized-text);
   }
 

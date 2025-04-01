@@ -20,6 +20,13 @@ declare global {
     category?: ESkillCategory
   }
 
+  interface Theme {
+    id: string
+    name: string
+    color: string
+    framePicture?: string
+  }
+
   type TOrientation = 'left'|'right'
 
   type TSection = 'projects' | 'skills' | 'contact' | 'top-page'

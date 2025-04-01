@@ -1,16 +1,8 @@
 <template>
   <nav class="navbar" id="navbar" ref="wholeNavbar">
-    <h1 class="navbar__title" @click="handleSideClick('top-page')">Hugo Tavard</h1>
+    <div class="navbar-link-container">
+      <h1 class="navbar__title" @click="handleSideClick('top-page')">Hugo Tavard</h1>
 
-    <div class="navbar-links-container">
-      <ul class="lang">
-        <li>
-          <button @click="switchLang('fr')">🇫🇷</button>
-        </li>
-        <li>
-          <button @click="switchLang('en')">🇬🇧</button>
-        </li>
-      </ul>
       <ul class="navbar-links" v-if="!isMobile">
         <li @click="emit('scroll', 'top-page')"><strong>{{ $t('about') }}</strong></li>
         <li @click="emit('scroll', 'projects')"><strong>{{ $t('projects') }}</strong></li>
@@ -19,8 +11,8 @@
       </ul>
     </div>
 
-    <div>
-      <ul class="navbar-side-links" v-if="isMobile" :class="{ visible: isActive }">
+    <div v-if="isMobile">
+      <ul class="navbar-side-links" :class="{ visible: isActive }">
         <li @click="handleSideClick('top-page')"><strong>{{ $t('about') }}</strong></li>
         <li @click="handleSideClick('projects')"><strong>{{ $t('projects') }}</strong></li>
         <li @click="handleSideClick('skills')"><strong>{{ $t('skills') }}</strong></li>
@@ -29,22 +21,22 @@
 
           <div class="navbar-side-links__contact--socials">
             <svg @click="clickContact('https://www.linkedin.com/in/hugo-tavard-developper/')" title="Linkedin"
-              width="50px" height="50px" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
+              width="50px" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
                 <path
-                  d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z"
-                  ></path>
+                  d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z">
+                </path>
                 <path
-                  d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z"
-                  ></path>
+                  d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z">
+                </path>
                 <path
-                  d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11 16 13V18.0004C16 18.5527 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V12C19 10 17.5 9 15.5 9C13.5 9 13 10.5 13 10.5V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z"
-                  ></path>
+                  d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11 16 13V18.0004C16 18.5527 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V12C19 10 17.5 9 15.5 9C13.5 9 13 10.5 13 10.5V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z">
+                </path>
                 <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z"
-                  ></path>
+                  d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z">
+                </path>
               </g>
             </svg>
             <svg @click="clickContact('https://github.com/htavard')" title="Github" width="50px" height="50px"
@@ -65,12 +57,12 @@
               width="50px" height="50px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg"
               transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" 
-                stroke-width="0.048"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.048"></g>
               <g id="SVGRepo_iconCarrier">
                 <path
                   d="M17 17H17.01M17.4 14H18C18.9319 14 19.3978 14 19.7654 14.1522C20.2554 14.3552 20.6448 14.7446 20.8478 15.2346C21 15.6022 21 16.0681 21 17C21 17.9319 21 18.3978 20.8478 18.7654C20.6448 19.2554 20.2554 19.6448 19.7654 19.8478C19.3978 20 18.9319 20 18 20H6C5.06812 20 4.60218 20 4.23463 19.8478C3.74458 19.6448 3.35523 19.2554 3.15224 18.7654C3 18.3978 3 17.9319 3 17C3 16.0681 3 15.6022 3.15224 15.2346C3.35523 14.7446 3.74458 14.3552 4.23463 14.1522C4.60218 14 5.06812 14 6 14H6.6M12 15V4M12 15L9 12M12 15L15 12"
-                  :stroke="'var(--background)'" stroke-width="1.056" stroke-linecap="round" stroke-linejoin="round"></path>
+                  :stroke="'var(--background)'" stroke-width="1.056" stroke-linecap="round" stroke-linejoin="round">
+                </path>
               </g>
             </svg>
             <strong>{{ $t('resume') }}</strong>
@@ -78,13 +70,23 @@
         </li>
       </ul>
     </div>
-    <div style="height: 50px;">
+    <div class="burger-lang">
+      <themeSwitch />
+      <ul class="lang">
+        <li>
+          <button @click="switchLang('fr')">🇫🇷</button>
+        </li>
+        <li>
+          <button @click="switchLang('en')">🇬🇧</button>
+        </li>
+      </ul>
+
       <svg v-if="isMobile" class="hamb hamb-rotate hamb1" :class="{ active: isActive }" width="50px" height="50px"
         viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" @click="handleToggleSidebar">
         <path class="line top"
           d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"
           stroke-width="2" stroke-linecap="round" />
-        <path class="line middle" d="m 30,50 h 40"  stroke-width="2" stroke-linecap="round" />
+        <path class="line middle" d="m 30,50 h 40" stroke-width="2" stroke-linecap="round" />
         <path class="line bottom"
           d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"
           stroke-width="2" stroke-linecap="round" />
@@ -96,6 +98,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { onClickOutside } from '@vueuse/core'
+import themeSwitch from './theme-switch.vue'
+
 const { locale } = useI18n()
 
 const baseUrl = process.env.NODE_ENV === 'production'
@@ -169,7 +173,6 @@ watch(() => isActive.value,
   height: 5rem;
   --navbar-height: 5rem;
   justify-content: space-between;
-  align-items: center;
   transition: background-color 0.2s ease;
   background-color: var(--stylized-text);
   color: var(--background);
@@ -181,27 +184,27 @@ watch(() => isActive.value,
   &__title {
     cursor: pointer;
     font-size: 2rem;
-    flex: 1;
   }
 
-  .navbar-links-container {
+  .navbar-link-container {
     display: flex;
-    gap: 2vw;
-    justify-content: flex-end;
+    gap: 5vw;
+  }
+
+
+
+
+  .navbar-links {
     list-style: none;
-    flex: 3;
+    display: flex;
     align-items: center;
+    gap: 5vw;
+    padding-left: 0;
+  }
 
-    .navbar-links {
-      list-style: none;
-      display: flex;
-      gap: 5vw;
-      padding-left: 0;
-    }
+  li {
+    cursor: pointer;
 
-    li {
-      cursor: pointer;
-    }
   }
 }
 
@@ -289,11 +292,18 @@ watch(() => isActive.value,
   right: 0;
 }
 
+.burger-lang {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
 .lang {
   list-style: none;
   padding-left: 0;
   display: flex;
   gap: 5px;
+  justify-content: flex-end;
 
   button {
     border: none;
@@ -305,9 +315,17 @@ watch(() => isActive.value,
 
 @media screen and (max-width: 1000px) {
   .navbar {
+    gap: 2.5vw;
+
     &__title {
       font-size: 1.5rem;
     }
+
+
+    .navbar-links {
+      gap: 2.5vw;
+    }
+
   }
 
 }
@@ -315,15 +333,7 @@ watch(() => isActive.value,
 
 @media screen and (max-width: 768px) {
   .navbar {
-    padding-right: 5rem;
-
-    .navbar-links-container {
-      flex: 1;
-
-      .lang {
-        padding-right: 2vw;
-      }
-    }
+    padding-right: 3rem;
 
     &__title {
       font-size: 1.5rem;
@@ -333,7 +343,8 @@ watch(() => isActive.value,
 
 @media screen and (max-width: 650px) {
   .navbar {
-  padding-right: 3rem;
+    padding-right: 2rem;
+
     &__title {
       flex: 2;
     }
@@ -349,6 +360,7 @@ watch(() => isActive.value,
 @media screen and (max-width: 400px) {
   .navbar {
     padding-right: 1.5rem;
+
     &__title {
       font-size: 1.25rem;
     }

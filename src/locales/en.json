@@ -22,6 +22,12 @@
   "sendFormVerif":"Please fill out all fields",
   "sendFormAccept": "Email sent successfully!",
   "resumeLang": "ht_dev_resume_en.pdf",
+  "theme": {
+    "fall":"fall",
+    "winter":"winter",
+    "summer":"summer",
+    "spring":"spring"
+  },
   "projectDescList": {
     "ValueMyCar": "Connect professionals and automobilists for car maintenance",
     "LaytonStories": "Enter Professor Layton's universe !",
