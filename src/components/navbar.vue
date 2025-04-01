@@ -293,6 +293,14 @@ watch(() => isActive.value,
   list-style: none;
   padding-left: 0;
   display: flex;
+  gap: 5px;
+
+  button {
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
 }
 
 @media screen and (max-width: 1000px) {

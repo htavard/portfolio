@@ -7,17 +7,17 @@ body {
 }
 
 body {
-  background-color: #f9e0bb;
-  color: #343131;
+  background-color: var(--background);
+  color: var(--text);
   font-family: 'Poppins', sans-serif;
   margin: 0;
 }
 
 button {
   background-color: transparent;
-  border: 5px double #4a2c2a;
+  // border: 5px double #4a2c2a;
   font-family: 'Poppins', sans-serif;
-  color: #4a2c2a;
+  // color: #4a2c2a;
   cursor: pointer;
 }
 
@@ -29,21 +29,32 @@ a {
   }
 }
 
+// :root {
+
+//   --text: #343131;
+//   --background: #F9E0BB;
+//   --stylized-text : #4a2c2a;
+//   --tag-color: #ff7f51;
+//   --tag-text: #720026;
+//   --titlebox: #f7b267;
+// }
+
+// :root {
+
+//   --text: #343131;
+//   --background: #BDE0FE;
+//   --stylized-text : #081c15;
+//   --tag-color: #ff5555;
+//   --tag-text: #720026;
+//   --titlebox: #9cc5a1;
+// }
+
 :root {
-  --fall-cream: #f9e0bb;
-  --fall-pumpkin: #d67d3e;
-  --fall-maple: #a34343;
-  --fall-goldenrod: #e6af2e;
-  --fall-forest: #556b2f;
-  --fall-espresso: #4a2c2a;
 
-  --fall-skill: #ff7f51;
-  --fall-tag: #720026;
-
-  --text: #343131;
-  --background: #F9E0BB;
-  --stylized-text : #4a2c2a;
-  --tag-color: #ff7f51;
-  --tag-text: #720026;
-  --titlebox: #f7b267;
+  --text: #E6EDF3;
+  --background: #121A24  ;
+  --stylized-text : #E6EDF3  ;
+  --tag-color: #1F3937   ;
+  --tag-text: #B0C4DE  ;
+  --titlebox: #203A47   ;
 }
