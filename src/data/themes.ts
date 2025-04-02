@@ -9,4 +9,16 @@ export const themes: Theme[] = [{
   name: 'winter',
   color: '#121A24',
   framePicture: "assets/pictures/winter/frameSnowFlake.png"
+},
+{
+  id: 'spring-theme',
+  name: 'spring',
+  color: '#1b4332  ',
+  framePicture: "assets/pictures/spring/frameSpringLeaf.png"
+},
+{
+  id: 'summer-theme',
+  name: 'summer',
+  color: '#6a040f  ',
+  framePicture: "assets/pictures/summer/frameSun.png"
 }]

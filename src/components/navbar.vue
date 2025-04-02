@@ -126,21 +126,6 @@ function handleToggleSidebar() {
   isActive.value = !isActive.value
 }
 
-onMounted(() => {
-  document.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar')
-    const scrollY = window.scrollY
-    const maxScroll = 400
-    const progress = Math.min(scrollY / maxScroll, 0.7)
-
-    const startColor = [74, 44, 42]
-
-
-    const border = `3px solid rgba(${startColor[0]}, ${startColor[1]}, ${startColor[2]}, ${progress})`
-    if (navbar) navbar.style.borderBottom = border
-  })
-})
-
 function switchLang(lang: string) {
   locale.value = lang
   localStorage.setItem('user-lang', lang)

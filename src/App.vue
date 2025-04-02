@@ -167,20 +167,6 @@ categorySkills()
   transition: transform 0.3s ease-in-out;
 }
 
-// .noise-background {
-//   animation: noise 1.2s steps(3) infinite both;
-//   background-image: url("../src/assets/pictures/noise.png");
-//   height: 200%;
-//   left: -50%;
-//   opacity: 0.1;
-//   pointer-events: none;
-//   position: fixed;
-//   top: -50%;
-//   width: 200%;
-//   will-change: auto;
-//   z-index: 100;
-// }
-
 h2 {
   padding-top: 110px; //navbar height
   margin-top: -110px;
