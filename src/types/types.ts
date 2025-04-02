@@ -25,6 +25,7 @@ declare global {
     name: string
     color: string
     framePicture?: string
+    backgroundSelected: string
   }
 
   type TOrientation = 'left'|'right'

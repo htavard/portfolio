@@ -3,7 +3,7 @@ import { themes } from "@/data/themes"
 
 export const useThemeStore = defineStore('theme', {
   state: () => ({
-    currentTheme: 'fall-theme', //default
+    currentTheme: localStorage.getItem('selected-theme') || 'fall-theme', //default
     themes:  themes
   }),
 

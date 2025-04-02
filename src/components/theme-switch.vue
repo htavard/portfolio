@@ -30,9 +30,12 @@
       </g>
     </svg>
     <div v-if="isVisible" class="dropdown">
-      <div v-for="theme in availableThemes" :key="theme.name" class="theme-option" @click="selectTheme(theme.id)">
+      <div v-for="theme in availableThemes" :key="theme.name" class="theme-option" @click="selectTheme(theme.id)"
+        :style="currentTheme === theme.id ? { backgroundColor: theme.backgroundSelected } : {}">
         <div class="color-circle" :style="{ backgroundColor: theme.color }"></div>
-        <span class="theme-name">{{ $t(`theme.${theme.name}`) }}</span>
+        <span class="theme-name"
+          :style="currentTheme === theme.id ? { color: theme.color } : {}">{{
+            $t(`theme.${theme.name}`) }}</span>
       </div>
     </div>
   </div>
@@ -50,11 +53,13 @@ const availableThemes: Theme[] = themes
 
 const switchContainer = useTemplateRef('switchContainer')
 
-onMounted(()=> {
+const currentTheme = computed(() => themeStore.currentTheme)
+
+onMounted(() => {
   const savedTheme = localStorage.getItem('selected-theme')
-  if(savedTheme) {
+  if (savedTheme) {
     const theme = availableThemes.find(t => t.id === savedTheme)
-    if(theme) themeStore.setTheme(theme.id)
+    if (theme) themeStore.setTheme(theme.id)
   }
 })
 
@@ -69,7 +74,7 @@ const toggleTheme = () => {
 
 onClickOutside(switchContainer, () => {
 
-isVisible.value = false
+  isVisible.value = false
 })
 </script>
 
