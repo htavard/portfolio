@@ -82,9 +82,9 @@
     </div>
 
     <div class="header__content--profile-wrapper" v-if="themeStore.frameUrl">
-      <img :src="baseUrl + themeStore.frameUrl" alt="Décoration feuille automne"
+      <img :src="themeStore.frameUrl" alt="Décoration profil"
         class="header__content--profile-wrapper__leaf bottom-left">
-      <img :src="baseUrl + themeStore.frameUrl" alt="Décoration feuille automne"
+      <img :src="themeStore.frameUrl" alt="Décoration profil"
         class="header__content--profile-wrapper__leaf upper-right">
       <div class="header__content--profile-wrapper__image">
         <img src="../assets/pictures/myself.jpeg" alt="Photo d'Hugo Tavard"
