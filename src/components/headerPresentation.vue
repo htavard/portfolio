@@ -106,7 +106,7 @@ const props = defineProps({
 
 const baseUrl = process.env.NODE_ENV === 'production'
   ? '/portfolio/'
-  : 'src/'
+  : 'src/assets/'
 
 const headerWidth = ref<number>(0)
 
