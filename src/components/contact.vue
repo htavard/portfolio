@@ -204,6 +204,7 @@ function clickContact(link: string) {
         font-weight: 500;
         font-size: 1.25rem;
         text-transform: uppercase;
+        font-family: 'Poppins', sans-serif;
       }
 
       input,
@@ -213,6 +214,7 @@ function clickContact(link: string) {
         border-bottom: 2px solid var(--stylized-text);
         font-size: 1rem;
         color: var(--stylized-text);
+        font-family: 'Poppins', sans-serif;
       }
 
       textarea {
